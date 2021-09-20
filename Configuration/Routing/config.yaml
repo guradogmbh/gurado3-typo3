@@ -1,0 +1,13 @@
+routeEnhancers:
+  GuradoStorefrontPlugin:
+    type: Extbase
+    extension: GuradoStorefront
+    plugin: Guradostoreplugin
+    routes:
+      - routePath: '/{url}'
+        _controller: 'GuradoStorefront::guradoPlugin'
+        _arguments:
+          url: url
+    aspects:
+      url:
+        type: GuradoProductSKUMapper

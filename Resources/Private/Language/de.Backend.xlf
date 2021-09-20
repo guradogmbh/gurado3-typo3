@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" target-language="de" datatype="plaintext" original="EXT:gurado_storefront/Resources/Private/Language/de.Backend" date="2021-06-02T08:59:57Z" product-name="gurado_storefront">
+		<header/>
+		<body>
+			<trans-unit id="guradostorefront.generalSettings">
+				<source>General Settings</source>
+				<target>Allgemeine Einstellungen</target>
+			</trans-unit>
+			<trans-unit id="guradostorefront.otherSettings">
+				<source>Other Settings</source>
+				<target>Weitere Einstellungen</target>
+			</trans-unit>
+			<trans-unit id="guradostorefront.includes">
+				<source>Includes</source>
+				<target>Includes</target>
+			</trans-unit>
+			<trans-unit id="guradostorefront.includeJquery">
+				<source>Include JQuery: Include Jquery In your site. Note that if your website already includes complete jquery then uncheck this field.</source>
+				<target>JQuery einbeziehen: Jquery in deiner Website einschließen. Wenn deine Website bereits JQuery enthält, kannst du dieses Feld deaktivieren.</target>
+			</trans-unit>
+			<trans-unit id="guradostorefront.includeBootstrap">
+				<source>Include Bootstrap: Include Bootstrap In your site. Note that if your website already includes bootstrap then uncheck this field.</source>
+				<target>Bootstrap einbeziehen: Bootstrap in deine Website einschließen. Wenn deine Website bereits Bootstrap enthält, kannst du dieses Feld deaktivieren.</target>
+			</trans-unit>
+			<trans-unit id="guradostorefront.authToken">
+				<source>Access Token: Add Access Token from your shop's Dashboard</source>
+				<target>Access Token: Access Token vom Dashboard deines Shops hinzufügen</target>
+			</trans-unit>
+			<trans-unit id="guradostorefront.clientId">
+				<source>Consumer Key: Add Consumer Key from your shop's Dashboard</source>
+				<target>Consumer Key: Consumer Key vom Dashboard deines Shops hinzufügen</target>
+			</trans-unit>
+			<trans-unit id="guradostorefront.selectView">
+				<source>Select View</source>
+				<target>Ansicht auswählen</target>
+			</trans-unit>
+			<trans-unit id="guradostorefront.list">
+				<source>Product List</source>
+				<target>Artikelliste</target>
+			</trans-unit>
+			<trans-unit id="guradostorefront.detail">
+				<source>Product Details</source>
+				<target>Artikeldetails</target>
+			</trans-unit>
+			<trans-unit id="guradostorefront.cart">
+				<source>Cart</source>
+				<target>Warenkorb</target>
+			</trans-unit>
+			<trans-unit id="guradostorefront.checkout">
+				<source>Checkout</source>
+				<target>Zur Kasse</target>
+			</trans-unit>
+			<trans-unit id="guradostorefront.payment">
+				<source>Payment</source>
+				<target>Zahlung</target>
+			</trans-unit>
+			<trans-unit id="guradostorefront.success">
+				<source>Order Success</source>
+				<target>Bestellung erfolgreich</target>
+			</trans-unit>
+			<trans-unit id="guradostorefront.storeconfig">
+				<source>gurado Store Config</source>
+				<target>gurado Store Config</target>
+			</trans-unit>
+			<trans-unit id="guradostorefront.voucherDetailsPid">
+				<source>Details Page id</source>
+				<target>Details Seiten-ID</target>
+			</trans-unit>
+			<trans-unit id="guradostorefront.voucherListPid">
+				<source>List Page id</source>
+				<target>Listen Seiten-ID</target>
+			</trans-unit>
+			<trans-unit id="guradostorefront.cartPid">
+				<source>Cart Page id</source>
+				<target>Warenkorb Seiten-ID</target>
+			</trans-unit>
+			<trans-unit id="guradostorefront.orderSuccessPid">
+				<source>Order Success Page id</source>
+				<target>Bestellung erfolgreich aufgegeben Seiten-ID</target>
+			</trans-unit>
+			<trans-unit id="guradostorefront.checkoutPid">
+				<source>Checkout Page id</source>
+				<target>Checkout Seiten-ID</target>
+			</trans-unit>
+			<trans-unit id="guradostorefront.paymentPid">
+				<source>Payment Page id</source>
+				<target>Zahlung Seiten-ID</target>
+			</trans-unit>
+			<trans-unit id="guradostorefront.settings">
+				<source>Settings</source>
+				<target>Einstellungen</target>
+			</trans-unit>
+			<trans-unit id="guradostorefront.showVoucherImgInDetails">
+				<source>Show Product Image?</source>
+				<target>Artikelbild anzeigen?</target>
+			</trans-unit>
+			<trans-unit id="guradostorefront.positionAndAlignment">
+				<source>Position and Alignment of Image (This field will only work if above flag "Show Product Image?" is ON)</source>
+				<target>Position und Ausrichtung des Bildes (Dieses Feld funktioniert nur, wenn die obige Option "Produktbild anzeigen?" aktiviert ist)</target>
+			</trans-unit>
+			<trans-unit id="guradostorefront.selectGuradoCategories">
+				<source>Select gurado Categories</source>
+				<target>Wähle die gurado Kategorien</target>
+			</trans-unit>
+			<trans-unit id="guradostorefront.aboveCenter">
+				<source>Above, center</source>
+				<target>Oben, mittig</target>
+			</trans-unit>
+			<trans-unit id="guradostorefront.aboveLeft">
+				<source>Above, left</source>
+				<target>Oben, links</target>
+			</trans-unit>
+			<trans-unit id="guradostorefront.aboveRight">
+				<source>Above, right</source>
+				<target>Oben, rechts</target>
+			</trans-unit>
+			<trans-unit id="guradostorefront.bottomCenter">
+				<source>Bottom, center</source>
+				<target>Unten, mittig</target>
+			</trans-unit>
+			<trans-unit id="guradostorefront.bottomLeft">
+				<source>Bottom, left</source>
+				<target>Unten, links</target>
+			</trans-unit>
+			<trans-unit id="guradostorefront.bottomRight">
+				<source>Bottom, right</source>
+				<target>Unten, rechts</target>
+			</trans-unit>
+			<trans-unit id="guradostorefront.inTextLeft">
+				<source>In text, left</source>
+				<target>Im Text, links</target>
+			</trans-unit>
+			<trans-unit id="guradostorefront.inTextRight">
+				<source>In text, right</source>
+				<target>Im Text, rechts</target>
+			</trans-unit>
+			<trans-unit id="guradostorefront.textColor">
+				<source>Font Color</source>
+				<target>Font Color</target>
+			</trans-unit>
+			<trans-unit id="guradostorefront.headingColor">
+				<source>Headings Color</source>
+				<target>Headings Color</target>
+			</trans-unit>
+			<trans-unit id="guradostorefront.linkColor">
+				<source>Link Color</source>
+				<target>Link Color</target>
+			</trans-unit>
+			<trans-unit id="guradostorefront.buttonColor">
+				<source>Button Color</source>
+				<target>Button Color</target>
+			</trans-unit>
+			<trans-unit id="guradostorefront.buttonTextColor">
+				<source>Button Text Color</source>
+				<target>Button Text Color</target>
+			</trans-unit>
+			<trans-unit id="guradostorefront.borderColor">
+				<source>Border Color</source>
+				<target>Border Color</target>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

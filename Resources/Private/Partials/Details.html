@@ -1,0 +1,577 @@
+<div class="gurado-storefront-productdetails">
+
+	<input type="hidden" value="{productDetails.sku}" id="pid" />
+	<a onclick="history.back();" class="m-w-100 back-to-last-page"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-left" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/></svg><f:translate key="back" /></a>
+	<div class="row d-mb-70 product-details">
+		<div class="col-sm-12">
+			<h2 class="product-name mb-4">{productDetails.name}</h2>
+			<div class="description {settings.detailsImgPosition}">
+			
+				<f:if condition="{settings.showVoucherImgInDetails} && {settings.detailsImgPosition} != 'bottom-left' && {settings.detailsImgPosition} != 'bottom-center' && {settings.detailsImgPosition} != 'bottom-right'">
+					
+					<f:if condition="{productDetails.images -> f:count()}">
+						<f:then>
+							<f:for each="{productDetails.images}" as="productImg" iteration="imgIterator">
+								<span class="product-img"><img src="{productImg.image_url}" alt="{productDetails.name}" width="{productImg.image_width}" height="{productImg.image_height}" /></span>
+							</f:for>
+						</f:then>
+					</f:if>
+					
+				</f:if>
+				
+				<f:format.htmlentitiesDecode>{productDetails.description}</f:format.htmlentitiesDecode>
+				
+				<f:if condition="{settings.showVoucherImgInDetails} && ({settings.detailsImgPosition} == 'bottom-left' || {settings.detailsImgPosition} == 'bottom-center' || {settings.detailsImgPosition} == 'bottom-right')">
+				
+					<f:if condition="{productDetails.images -> f:count()}">
+						<f:then>
+							<f:for each="{productDetails.images}" as="productImg" iteration="imgIterator">
+								<span class="product-img"><img src="{productImg.image_url}" alt="{productDetails.name}" width="{productImg.image_width}" height="{productImg.image_height}" /></span>
+							</f:for>
+						</f:then>
+					</f:if>
+					
+				</f:if>
+				
+			</div>
+		</div>
+	</div>
+	<f:if condition="{productDetails.can_deliver_voucher_physically} == 'YES'">
+		<div class="block-heading"><f:translate key="selectShippingMethod" /></div>
+		<ul class="nav nav-tabs div-toggle-tabs d-mb-70" id="voucherOptions" role="tablist">
+			<li class="nav-item" role="presentation">
+				<button class="btn btn-primary active" id="emailTab" data-bs-toggle="tab" data-bs-target="#emailTabContents" type="button" role="tab" aria-controls="emailTabContents" aria-selected="true" data-toggle="tab" href="#emailTabContents"><f:translate key="voucherByEmailTabName" /></button>
+			</li>
+			<li class="nav-item" role="presentation">
+				<button class="btn btn-primary" id="perpostTab" data-bs-toggle="tab" data-bs-target="#perpostTabContents" type="button" role="tab" aria-controls="perpostTabContents" aria-selected="false" data-toggle="tab" href="#perpostTabContents"><f:translate key="voucherByPostTabName" /></button>
+			</li>
+		</ul>
+	</f:if>
+	<div class="row desktop-only d-mb-70">
+		<div class="col-sm-12 voucher-select">
+			<div class="virtual-vouchers">
+				<f:if condition="{productDetails.virtual_voucher_design_templates -> f:count()} > 1">
+					<f:then>
+						<div class="block-heading"><f:translate key="chooseMotiv" /></div>
+					</f:then>
+					<f:else>
+						<div class="block-heading"><f:translate key="availableTemplate" /></div>
+					</f:else>
+				</f:if>
+				<div id="voucherVirtualTemplateCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="false" data-ride="carousel" data-interval="false">
+					<div class="carousel-inner {f:if(condition: '{productDetails.virtual_voucher_templates -> f:count()} > 1', then: ' slider-have-next')}">
+						<f:for each="{productDetails.virtual_voucher_templates}" as="virtualVoucherTemplatesGroup4" iteration="virtualVoucherTemplatesGroupIterator">
+							<div class="carousel-item {f:if(condition: '{virtualVoucherTemplatesGroupIterator.index} == 0', then: ' active')}">
+								<f:for each="{virtualVoucherTemplatesGroup4}" as="previewTemplate" iteration="previewTemplateIterator">
+									<f:if condition="{virtualVoucherTemplatesGroupIterator.index} == 0 && {previewTemplateIterator.index} == 0">
+										<f:then>
+											<input type="hidden" value="{previewTemplate.template_id}" class="virtualVoucherTemplateId" />
+											<span class="img template-{previewTemplate.template_id} selected" onclick='selectVirtualVourcherDesign({previewTemplate.template_id}, "{previewTemplate.thumbnail_url}")'><img src="{previewTemplate.thumbnail_url}" /></span>
+										</f:then>
+										<f:else>
+											<span class="img template-{previewTemplate.template_id}" onclick='selectVirtualVourcherDesign({previewTemplate.template_id}, "{previewTemplate.thumbnail_url}")'><img src="{previewTemplate.thumbnail_url}" /></span>
+										</f:else>
+									</f:if>
+								</f:for>
+							</div>
+						</f:for>	
+					</div>
+					
+					<f:if condition="{productDetails.virtual_voucher_templates -> f:count()} > 1">
+						<a href="#" class="carousel-control-prev slide-prev" onclick="slideCarousel(event, 'voucherVirtualTemplateCarousel', 'prev')"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-compact-left" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M9.224 1.553a.5.5 0 0 1 .223.67L6.56 8l2.888 5.776a.5.5 0 1 1-.894.448l-3-6a.5.5 0 0 1 0-.448l3-6a.5.5 0 0 1 .67-.223z"/></svg></a>
+						
+						<a href="#" class="carousel-control-next slide-next" onclick="slideCarousel(event, 'voucherVirtualTemplateCarousel', 'next')"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-compact-right" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M6.776 1.553a.5.5 0 0 1 .671.223l3 6a.5.5 0 0 1 0 .448l-3 6a.5.5 0 1 1-.894-.448L9.44 8 6.553 2.224a.5.5 0 0 1 .223-.671z"/></svg></a>
+					</f:if>
+				</div>
+			</div> 
+			
+			<f:if condition="{productDetails.can_deliver_voucher_physically} == 'YES'">
+				<div class="physical-vouchers" style="display: none;">
+					<f:if condition="{productDetails.physical_voucher_design_templates -> f:count()} > 1">
+						<f:then>
+							<div class="block-heading"><f:translate key="chooseMotiv" /></div>
+						</f:then>
+						<f:else>
+							<div class="block-heading"><f:translate key="availableTemplate" /></div>
+						</f:else>
+					</f:if>
+					<div id="physicalVirtualTemplateCarousel" class="carousel slide"  data-bs-ride="carousel" data-bs-interval="false" data-ride="carousel" data-interval="false">
+						<input type="hidden" value="{previewTemplate.template_id}" class="virtualVoucherTemplateId" />
+						<div class="carousel-inner {f:if(condition: '{productDetails.physical_voucher_templates -> f:count()} > 1', then: ' slider-have-next')}">
+							<f:for each="{productDetails.physical_voucher_templates}" as="physicalVoucherTemplatesGroup4" iteration="physicalVoucherTemplatesGroupIterator">
+								<div class="carousel-item {f:if(condition: '{physicalVoucherTemplatesGroupIterator.index} == 0', then: 'active')}">
+									<f:for each="{physicalVoucherTemplatesGroup4}" as="previewTemplate" iteration="previewTemplateIterator">
+										<f:if condition="{physicalVoucherTemplatesGroupIterator.index} == 0 && {previewTemplateIterator.index} == 0">
+											<f:then>
+												<input type="hidden" value="{previewTemplate.template_id}" class="physicalVoucherTemplateId" />
+												<span class="img template-{previewTemplate.template_id} selected" onclick='selectPhysicalVourcherDesign({previewTemplate.template_id}, "{previewTemplate.thumbnail_url}")'><img src="{previewTemplate.thumbnail_url}" /></span>
+											</f:then>
+											<f:else>
+												<span class="img template-{previewTemplate.template_id}" onclick='selectPhysicalVourcherDesign({previewTemplate.template_id}, "{previewTemplate.thumbnail_url}")'><img src="{previewTemplate.thumbnail_url}" /></span>
+											</f:else>
+										</f:if>
+									</f:for>
+								</div>
+							</f:for>	
+						</div>
+						
+						<f:if condition="{productDetails.physical_voucher_templates -> f:count()} > 1">
+							<a href="#" class="carousel-control-prev slide-prev" onclick="slideCarousel(event, 'physicalVirtualTemplateCarousel', 'prev')"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-compact-left" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M9.224 1.553a.5.5 0 0 1 .223.67L6.56 8l2.888 5.776a.5.5 0 1 1-.894.448l-3-6a.5.5 0 0 1 0-.448l3-6a.5.5 0 0 1 .67-.223z"/></svg></a>
+						
+							<a href="#" class="carousel-control-next slide-next" onclick="slideCarousel(event, 'physicalVirtualTemplateCarousel', 'next')"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-compact-right" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M6.776 1.553a.5.5 0 0 1 .671.223l3 6a.5.5 0 0 1 0 .448l-3 6a.5.5 0 1 1-.894-.448L9.44 8 6.553 2.224a.5.5 0 0 1 .223-.671z"/></svg></a>
+						</f:if>
+					</div>
+				</div>
+			</f:if>
+		</div>
+	</div>
+	<div class="row only-mobile">
+		<div class="col-sm-12 voucher-select">
+			<div class="virtual-vouchers">
+				<f:if condition="{productDetails.virtual_voucher_design_templates -> f:count()} > 1">
+					<f:then>
+						<div class="block-heading"><f:translate key="chooseMotiv" /></div>
+					</f:then>
+					<f:else>
+						<div class="block-heading"><f:translate key="availableTemplate" /></div>
+					</f:else>
+				</f:if>
+				<f:for each="{productDetails.virtual_voucher_design_templates}" as="previewTemplate" iteration="previewTemplateIterator">
+					<f:if condition="{previewTemplateIterator.index} == 0">
+						<f:then>
+							<input type="hidden" value="{previewTemplate.template_id}" class="virtualVoucherTemplateId" />
+							<span class="img template-{previewTemplate.template_id} selected" onclick='selectVirtualVourcherDesign({previewTemplate.template_id}, "{previewTemplate.thumbnail_url}")'><img src="{previewTemplate.thumbnail_url}" /></span>
+						</f:then>
+						<f:else>
+							<span class="img template-{previewTemplate.template_id}" onclick='selectVirtualVourcherDesign({previewTemplate.template_id}, "{previewTemplate.thumbnail_url}")'><img src="{previewTemplate.thumbnail_url}" /></span>
+						</f:else>
+					</f:if>
+					
+				</f:for>
+			</div>
+			<f:if condition="{productDetails.can_deliver_voucher_physically} == 'YES'">
+				<div class="physical-vouchers" style="display: none;">
+					<f:if condition="{productDetails.physical_voucher_design_templates -> f:count()} > 1">
+						<f:then>
+							<div class="block-heading"><f:translate key="chooseMotiv" /></div>
+						</f:then>
+						<f:else>
+							<div class="block-heading"><f:translate key="availableTemplate" /></div>
+						</f:else>
+					</f:if>
+					<f:for each="{productDetails.physical_voucher_design_templates}" as="previewTemplate" iteration="previewTemplateIterator">
+						<f:if condition="{previewTemplateIterator.index} == 0">
+							<f:then>
+								<input type="hidden" value="{previewTemplate.template_id}" class="physicalVoucherTemplateId" />
+								<span class="img template-{previewTemplate.template_id} selected" onclick='selectPhysicalVourcherDesign({previewTemplate.template_id}, "{previewTemplate.thumbnail_url}")'><img src="{previewTemplate.thumbnail_url}" /></span>
+							</f:then>
+							<f:else>
+								<span class="img template-{previewTemplate.template_id}" onclick='selectPhysicalVourcherDesign({previewTemplate.template_id}, "{previewTemplate.thumbnail_url}")'><img src="{previewTemplate.thumbnail_url}" /></span>
+							</f:else>
+						</f:if>
+						
+					</f:for>
+				</div>
+			</f:if>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-12">
+			<label class="font-bold perpost-note" style="display: none;"><f:translate key="physicalVoucherDeliveryNote" /></label>
+			<div class="block-heading"><f:translate key="personalization" /></div>
+			<f:if condition="{showOptions}">
+				<div class="row">
+					<div class="col-sm-12">
+						<form novalidate class="product-options-form">
+							<div class="font-blue mb-3"><f:translate key="pleaseSelect" /></div>
+							<div class="product-options">
+								<f:for each="{productDetails.options}" as="option" iteration="optionIterator">
+									<f:if condition="{option.type} == 'dropdown' || {option.type} == 'DROPDOWN'">
+										<f:then>
+											<div class="row form-row">
+												<div class="col-sm-12 col-md-8 col-lg-6">
+													<label class="col-form-label pt-0">{option.title} <span class="{f:if(condition: '{option.is_required} == \'NO\'', then: 'hidden')}">*</span></label>
+													<span class="select-wrap">
+														<select class="form-control" data-required="{option.is_required}" name="product_options_{option.option_id}" onchange="calculatePrice();">
+															<f:if condition="!{option.default_value}">
+																<option value="" selected><f:translate key="pleaseSelect" /></option>
+															</f:if>
+															<f:for each="{option.values}" as="dropdownOption">
+																<f:if condition="{option.default_value} && ({option.default_value} == {dropdownOption.value_id})}">
+																	<f:then>
+																		<option value="{dropdownOption.value_id}" selected>{dropdownOption.title}</option>
+																	</f:then>
+																	<f:else>
+																		<option value="{dropdownOption.value_id}">{dropdownOption.title}</option>
+																	</f:else>
+																</f:if>
+															</f:for>
+														</select>
+														<f:if condition="{option.is_required} == 'YES'">
+															<div class="invalid-feedback"><f:translate key="mandatoryField" /></div>
+														</f:if>
+													</span>
+												</div>
+											</div>
+										</f:then>
+										<f:else if="{option.type} == 'static' || {option.type} == 'STATIC'">
+											<div class="mb-3 form-row"><f:format.htmlentitiesDecode>{option.default_value}</f:format.htmlentitiesDecode></div>
+										</f:else>
+										<f:else if="{option.type} == 'textbox'">
+											<div class="row form-row">
+												<div class="col-sm-12 col-md-8 col-lg-6">
+													<label class="col-form-label pt-0">{option.title} <span class="{f:if(condition: '{option.is_required} == \'NO\'', then: 'hidden')}">*</span></label>
+													<input type="text" class="col-form-control form-control" data-required="{option.is_required}" value="{option.default_value}" name="product_options_{option.option_id}" />
+													<f:if condition="{option.is_required} == 'YES'">
+														<div class="invalid-feedback"><f:translate key="mandatoryField" /></div>
+													</f:if>
+												</div>
+											</div>
+										</f:else>
+										<f:else if="{option.type} == 'textarea' || {option.type} == 'TEXTAREA'">
+											<div class="row form-row">
+												<div class="col-sm-12 col-md-8 col-lg-6">
+													<label class="col-form-label pt-0">{option.title} <span class="{f:if(condition: '{option.is_required} == \'NO\'', then: 'hidden')}">*</span></label>
+													<textarea class="form-control" name="product_options_{option.option_id}" rows="3" data-required="{option.is_required}">{option.default_value}</textarea>
+													<f:if condition="{option.is_required} == 'YES'">
+														<div class="invalid-feedback"><f:translate key="mandatoryField" /></div>
+													</f:if>
+												</div>
+											</div>
+										</f:else>
+										<f:else if="{option.type} == 'radiobutton' || {option.type} == 'RADIOBUTTON'">
+											<div class="col-sm-12 form-row">
+												<label class="col-form-label pt-0">{option.title} <span class="{f:if(condition: '{option.is_required} == \'NO\'', then: 'hidden')}">*</span></label>
+												
+												<f:if condition="{option.default_value}">
+													<f:then>
+														<f:for each="{option.values}" as="radioOption">
+															<div class="form-check mt-2">
+																<f:if condition="{option.default_value} == {radioOption.value_id}">
+																	<f:then>
+																		<input class="form-check-input" type="radio" name="product_options_{option.option_id}" id="radio_{radioOption.value_id}" value="{radioOption.value_id}" checked />
+																	</f:then>
+																	<f:else>
+																		<input class="form-check-input" type="radio" name="product_options_{option.option_id}" id="radio_{radioOption.value_id}" value="{radioOption.value_id}" />
+																	</f:else>
+																</f:if>
+																	
+																<label class="form-check-label mb-0" for="radio_{radioOption.value_id}">{radioOption.title}</label>
+															</div>
+														</f:for>
+													</f:then>
+													<f:else>
+														<f:for each="{option.values}" as="radioOption" iteration="radioOptionIterator">
+															<div class="form-check mt-2">
+																<input class="form-check-input" type="radio" name="product_options_{option.option_id}" id="radio_{radioOption.value_id}" value="{radioOption.value_id}" data-required="{option.is_required}" />
+																<label class="form-check-label mb-0" for="radio_{radioOption.value_id}">{radioOption.title}</label>
+															</div>
+														</f:for>
+														<f:if condition="{option.is_required} == 'YES'">
+															<div class="invalid-feedback"><f:translate key="mandatoryField" /></div>
+														</f:if>
+													</f:else>
+												</f:if>
+
+											</div>
+										</f:else>
+										<f:else if="{option.type} == 'checkbox' || {option.type} == 'CHECKBOX'">
+											<div class="col-sm-12 form-row">							
+												<div class="form-check mt-2">
+													<f:if condition="{option.default_value} == 1">
+														<f:then>
+															<input class="form-check-input" type="checkbox" name="product_options_{option.option_id}" id="check_{option.option_id}" value="1" checked data-required="{option.is_required}" onclick="calculatePrice();" />
+														</f:then>
+														<f:else>
+															<input class="form-check-input" type="checkbox" name="product_options_{option.option_id}" id="check_{option.option_id}" value="1" data-required="{option.is_required}" onclick="calculatePrice();" />
+														</f:else>
+													</f:if>
+													<label class="form-check-label mb-0" for="check_{option.option_id}">{option.title}</label>
+													<f:if condition="{option.is_required} == 'YES'">
+														<div class="invalid-feedback"><f:translate key="mandatoryField" /></div>
+													</f:if>
+												</div>
+											</div>
+										</f:else>
+									</f:if>
+								</f:for>
+							</div>
+						</form>
+					</div>
+				</div>
+			</f:if>
+			<div class="row">
+				<div class="col-sm-12 col-md-8 col-lg-6">	
+					<div class="tab-content div-toggle-tabs-content" id="voucherOptionsContent">
+						<div class="tab-pane fade show active" id="emailTabContents" role="tabpanel" aria-labelledby="emailTab">
+							<div>
+								<form class="virtual-voucher-form" name="virtualForm">
+									<f:if condition="{showOptions}">
+										<f:then>
+											
+											<div class="row form-row">
+												<div class="col-sm-12">
+													<label class="col-form-label pt-0 mb-2"><f:translate key="amount" /></label>
+													<f:if condition="{productDetails.price_configuration.type} == 'range' || {productDetails.price_configuration.type} == 'RANGE'">
+														<f:then>
+															<label class="fixed-price">{productDetails.price_configuration.from -> f:format.currency(thousandsSeparator: '.', decimalSeparator: ',', currencySign: '{productDetails.currency_sign}')}</label>
+															<input type="hidden" value="{productDetails.price_configuration.from}" id="virtualFormVoucherAmount" />
+														</f:then>
+														<f:else if="{productDetails.price_configuration.type} == 'dropdown' || {productDetails.price_configuration.type} == 'DROPDOWN'">
+														
+															<f:for each="{productDetails.price_configuration.options}" as="dropdownOption" iteration="dropdownOptionIterator">
+																<f:if condition="{dropdownOptionIterator.index} == 0">
+																	<label class="fixed-price">{dropdownOption -> f:format.currency(thousandsSeparator: '.', decimalSeparator: ',', currencySign: '{productDetails.currency_sign}')}</label>
+																	<input type="hidden" value="{dropdownOption}" id="virtualFormVoucherAmount" />
+																</f:if>
+															</f:for>
+														</f:else>
+														<f:else if="{productDetails.price_configuration.type} == 'fixed' || {productDetails.price_configuration.type} == 'FIXED'">
+															<label class="fixed-price">{productDetails.price_configuration.amount -> f:format.currency(thousandsSeparator: '.', decimalSeparator: ',', currencySign: '{productDetails.currency_sign}')}</label>
+															<input type="hidden" value="{productDetails.price_configuration.amount}" id="virtualFormVoucherAmount" />
+														</f:else>
+														<f:else if="{productDetails.price_configuration.type} == 'configurable' || {productDetails.price_configuration.type} == 'CONFIGURABLE'">
+															<label class="fixed-price">{productDetails.price_configuration.minimum -> f:format.currency(thousandsSeparator: '.', decimalSeparator: ',', currencySign: '{productDetails.currency_sign}')}</label>
+															<input type="hidden" value="{productDetails.price_configuration.minimum}" id="virtualFormVoucherAmount" />
+														</f:else>
+														<f:else>
+															<input type="text" class="col-form-control form-control" id="virtualFormVoucherAmount" />
+														</f:else>
+													</f:if>
+												</div>
+											</div>
+										
+										</f:then>
+										<f:else>
+										
+											<div class="row form-row">
+												<div class="col-sm-12">
+													<label class="col-form-label pt-0 mb-1"><f:translate key="amount" /></label>
+													<f:if condition="{productDetails.price_configuration.type} == 'range' || {productDetails.price_configuration.type} == 'RANGE'">
+														<f:then>
+															<input type="text" class="col-form-control form-control" id="virtualFormVoucherAmount" placeholder="{productDetails.price_configuration.from -> f:format.currency(thousandsSeparator: '.', decimalSeparator: ',', currencySign: '{productDetails.currency_sign}')} - {productDetails.price_configuration.to -> f:format.currency(thousandsSeparator: '.', decimalSeparator: ',', currencySign: '{productDetails.currency_sign}')}" />
+															<div class="invalid-feedback price-error"><f:translate key="enterAmountBetween" /> {productDetails.price_configuration.from -> f:format.currency(thousandsSeparator: '.', decimalSeparator: ',', currencySign: '{productDetails.currency_sign}')} - {productDetails.price_configuration.to -> f:format.currency(thousandsSeparator: '.', decimalSeparator: ',', currencySign: '{productDetails.currency_sign}')}</div>
+														</f:then>
+														<f:else if="{productDetails.price_configuration.type} == 'dropdown' || {productDetails.price_configuration.type} == 'DROPDOWN'">
+															<span class="select-wrap">
+																<select class="form-control" id="virtualFormVoucherAmount">
+																	<f:for each="{productDetails.price_configuration.options}" as="dropdownOption" iteration="dropdownOptionIterator">
+																		<option value="{dropdownOption}">
+																			{dropdownOption -> f:format.currency(thousandsSeparator: '.', decimalSeparator: ',', currencySign: '{productDetails.currency_sign}')}
+																		</option>
+																	</f:for>
+																</select>
+															</span>
+															<div class="invalid-feedback price-error"><f:translate key="mandatoryField" /></div>
+
+														</f:else>
+														<f:else if="{productDetails.price_configuration.type} == 'fixed' || {productDetails.price_configuration.type} == 'FIXED'">
+															<label class="fixed-price">{productDetails.price_configuration.amount -> f:format.currency(thousandsSeparator: '.', decimalSeparator: ',', currencySign: '{productDetails.currency_sign}')}</label>
+															<input type="hidden" value="{productDetails.price_configuration.amount}" id="virtualFormVoucherAmount" />
+														</f:else>
+														<f:else>
+															<input type="text" class="col-form-control form-control" id="virtualFormVoucherAmount" />
+														</f:else>
+													</f:if>
+												</div>
+											</div>
+										
+										</f:else>
+									</f:if>
+									
+									<div class="row form-row voucher-send-to">
+										<div class="col-sm-12">
+											<label class="col-form-label pt-0 mb-2"><f:translate key="voucherReceiveMethod" /></label>
+											<div class="form-check">
+												<input class="form-check-input" type="radio" name="deliver_to" id="voucherReceiveMethodOption1" value="self" checked />
+												<label class="form-check-label" for="voucherReceiveMethodOption1"><f:translate key="voucherReceiveMethodOption1" /></label>
+											</div>
+											<div class="form-check mb-0">
+												<input class="form-check-input" type="radio" name="deliver_to" id="voucherReceiveMethodOption2" value="someone_else" />
+												<label class="form-check-label mb-0" for="voucherReceiveMethodOption2" /><f:translate key="voucherReceiveMethodOption2" /></label>
+											</div>
+										</div>
+									</div>
+									
+									<div class="row virtual-voucher-to-other form-row" style="display: none;">
+										<div class="col-sm-12">
+											<div class="row">
+												<div class="col-sm-12 form-row">
+													<label class="col-form-label pt-0"><f:translate key="voucherRecipientName" /> *</label>
+													<input type="text" class="form-control" name="virtual_voucher_recipient_name" />
+													<div class="invalid-feedback recipient-name-err"><f:translate key="mandatoryField" /></div>
+												</div>
+												<div class="col-sm-12">
+													<label class="col-form-label pt-0"><f:translate key="voucherRecipientEmail" /> *</label>
+													<input type="email" class="form-control" name="virtual_voucher_recipient_email" />
+													<div class="invalid-feedback recipient-email-err"><f:translate key="emailInvalid" /></div>
+												</div>
+											</div>
+										</div>
+									</div>
+									
+									<f:if condition="{productDetails.allow_personalized_message} == 'YES'">
+										<div class="row form-row">
+											<div class="col-sm-12">
+												<label class="col-form-label pt-0"><f:translate key="personalMessage" /></label>
+												<textarea class="form-control" name="virtual_form_personalized_message" rows="3" maxlength="200" onkeyup="changeCharLimitText(this, 'emailTab');"></textarea>
+												<div class="form-text"><f:translate key="remainingCharacters" />: <span class="remaining-chars">200</span></div>
+											</div>
+										</div>
+									</f:if>
+									<div class="row form-row delivery-speed-options" style="display: none;">
+										<div class="col-sm-12">
+											<div class="form-check">
+												<input class="form-check-input" type="radio" name="delivery_speed" id="deliverySpeedMethod1" value="immediate" checked />
+												<label class="form-check-label" for="deliverySpeedMethod1"><f:translate key="deliverySpeedMethodOption1" /></label>
+											</div>
+											<div class="form-check mb-0">
+												<input class="form-check-input" type="radio" name="delivery_speed" id="deliverySpeedMethod2" value="on_date" />
+												<label class="form-check-label mb-0" for="deliverySpeedMethod2" /><f:translate key="deliverySpeedMethodOption2" /></label>
+											</div>
+										</div>
+									</div>
+									<div class="row datepicker-container form-row" style="display:none;">
+										<div class="col-sm-12">
+											<label class="col-form-label pt-0"><f:translate key="deliverySpeedMethodOption2Message" /></label>
+											<input type="text" class="col-form-control form-control" id="datepicker" />
+											<div class="invalid-feedback date-error" style="display:none;"><f:translate key="mandatoryField" /></div>
+										</div>
+									</div>
+									<div class="row not-in-cart form-row">
+										<div class="col-sm-12">
+											<label class="col-form-label pt-0 mb-3"><f:translate key="quantity" /></label>
+											<span class="qty-container">
+												<span class="qty-action-btn" onclick="updateVoucherItemQty('decrease', 'virtual-voucher-form')">-</span><span class="qty-value">1</span><span class="qty-action-btn" onclick="updateVoucherItemQty('increase', 'virtual-voucher-form')">+</span>
+											</span>
+										</div>
+									</div>
+								</form>
+							</div>
+						</div>
+						<f:if condition="{productDetails.can_deliver_voucher_physically} == 'YES'">
+							<div class="tab-pane fade" id="perpostTabContents" role="tabpanel" aria-labelledby="perpostTab">
+								<form class="physical-voucher-form" name="physicalForm" novalidate>
+									
+									<f:if condition="{showOptions}">
+										<f:then>
+											
+											<div class="row form-row">
+												<div class="col-sm-12">
+													<label class="col-form-label pt-0 mb-2"><f:translate key="amount" /></label>
+													<f:if condition="{productDetails.price_configuration.type} == 'range' || {productDetails.price_configuration.type} == 'RANGE'">
+														<f:then>
+															<label class="fixed-price">{productDetails.price_configuration.from -> f:format.currency(thousandsSeparator: '.', decimalSeparator: ',', currencySign: '{productDetails.currency_sign}')}</label>
+															<input type="hidden" value="{productDetails.price_configuration.from}" id="physicalFormVoucherAmount" />
+														</f:then>
+														<f:else if="{productDetails.price_configuration.type} == 'dropdown' || {productDetails.price_configuration.type} == 'DROPDOWN'">
+														
+															<f:for each="{productDetails.price_configuration.options}" as="dropdownOption" iteration="dropdownOptionIterator">
+																<f:if condition="{dropdownOptionIterator.index} == 0">
+																	<label class="fixed-price">{dropdownOption -> f:format.currency(thousandsSeparator: '.', decimalSeparator: ',', currencySign: '{productDetails.currency_sign}')}</label>
+																	<input type="hidden" value="{dropdownOption}" id="physicalFormVoucherAmount" />
+																</f:if>
+															</f:for>
+															
+														</f:else>
+														<f:else if="{productDetails.price_configuration.type} == 'fixed' || {productDetails.price_configuration.type} == 'FIXED'">
+															<label class="fixed-price">{productDetails.price_configuration.amount -> f:format.currency(thousandsSeparator: '.', decimalSeparator: ',', currencySign: '{productDetails.currency_sign}')}</label>
+															<input type="hidden" value="{productDetails.price_configuration.amount}" id="physicalFormVoucherAmount" />
+														</f:else>
+														<f:else if="{productDetails.price_configuration.type} == 'configurable' || {productDetails.price_configuration.type} == 'CONFIGURABLE'">
+															<label class="fixed-price">{productDetails.price_configuration.minimum -> f:format.currency(thousandsSeparator: '.', decimalSeparator: ',', currencySign: '{productDetails.currency_sign}')}</label>
+															<input type="hidden" value="{productDetails.price_configuration.minimum}" id="physicalFormVoucherAmount" />
+														</f:else>
+														<f:else>
+															<input type="text" class="col-form-control form-control" id="physicalFormVoucherAmount" />
+														</f:else>
+													</f:if>
+													<label class="mb-0 mt-1">+ Versand per Post {productDetails.physical_voucher_price.total -> f:format.currency(thousandsSeparator: '.', decimalSeparator: ',', currencySign: '{productDetails.currency_sign}')} inkl. MwSt.</label>
+												</div>
+											</div>
+										
+										</f:then>
+										<f:else>
+										
+											<div class="row form-row">
+												<div class="col-sm-12">
+													<label class="col-form-label pt-0"><f:translate key="amount" /></label>
+													<f:if condition="{productDetails.price_configuration.type} == 'range' || {productDetails.price_configuration.type} == 'RANGE'">
+														<f:then>
+															<input type="text" class="col-form-control form-control" id="physicalFormVoucherAmount" placeholder="{productDetails.price_configuration.from -> f:format.currency(thousandsSeparator: '.', decimalSeparator: ',', currencySign: '{productDetails.currency_sign}')} - {productDetails.price_configuration.to -> f:format.currency(thousandsSeparator: '.', decimalSeparator: ',', currencySign: '{productDetails.currency_sign}')}" />
+															<div class="invalid-feedback price-error"><f:translate key="enterAmountBetween" /> {productDetails.price_configuration.from -> f:format.currency(thousandsSeparator: '.', decimalSeparator: ',', currencySign: '{productDetails.currency_sign}')} - {productDetails.price_configuration.to -> f:format.currency(thousandsSeparator: '.', decimalSeparator: ',', currencySign: '{productDetails.currency_sign}')}</div>
+														</f:then>
+														<f:else if="{productDetails.price_configuration.type} == 'dropdown' || {productDetails.price_configuration.type} == 'DROPDOWN'">
+															<span class="select-wrap">
+																<select class="form-control" id="physicalFormVoucherAmount">
+																	<f:for each="{productDetails.price_configuration.options}" as="dropdownOption" iteration="dropdownOptionIterator">
+																		<option value="{dropdownOption}">
+																			{dropdownOption -> f:format.currency(thousandsSeparator: '.', decimalSeparator: ',', currencySign: '{productDetails.currency_sign}')}
+																		</option>
+																	</f:for>
+																</select>
+															</span>
+															<div class="invalid-feedback price-error"><f:translate key="mandatoryField" /></div>
+														</f:else>
+														<f:else if="{productDetails.price_configuration.type} == 'fixed' || {productDetails.price_configuration.type} == 'FIXED'">
+															<label class="fixed-price">{productDetails.price_configuration.amount -> f:format.currency(thousandsSeparator: '.', decimalSeparator: ',', currencySign: '{productDetails.currency_sign}')}</label>
+															<input type="hidden" value="{productDetails.price_configuration.amount}" id="physicalFormVoucherAmount" />
+														</f:else>
+														<f:else>
+															<input type="text" class="col-form-control form-control" id="physicalFormVoucherAmount" />
+														</f:else>
+													</f:if>
+													<label class="mb-0 mt-1">+ Versand per Post {productDetails.physical_voucher_price.total -> f:format.currency(thousandsSeparator: '.', decimalSeparator: ',', currencySign: '{productDetails.currency_sign}')} inkl. MwSt.</label>
+												</div>
+											</div>
+										
+										</f:else>
+									</f:if>
+									
+									<div class="row form-row sender">
+										<div class="col-sm-12">
+											<label class="col-form-label pt-0"><f:translate key="from" /></label>
+											<input type="text" class="form-control" name="recipient_name" />
+										</div>
+									</div>
+									
+									<div class="row form-row">
+										<div class="col-sm-12">
+											<label class="col-form-label pt-0"><f:translate key="to" /></label>
+											<input type="text" class="form-control" name="sender_name" />
+										</div>
+									</div>
+
+									<f:if condition="{productDetails.allow_personalized_message} == 'YES'">
+										<div class="row form-row">
+											<div class="col-sm-12">
+												<label class="col-form-label pt-0"><f:translate key="personalMessageToRecipient" /></label>
+												<textarea class="form-control" name="physical_voucher_personalized_message" rows="3" maxlength="200" onkeyup="changeCharLimitText(this, 'perpostTab');"></textarea>
+												<div class="form-text"><f:translate key="remainingCharacters" />: <span class="remaining-chars">200</span></div>
+											</div>
+										</div>
+									</f:if>
+									
+									<div class="row not-in-cart form-row">
+										<div class="col-sm-12">
+											<label class="col-form-label pt-0 mb-3"><f:translate key="quantity" /></label>
+											<span class="qty-container">
+												<span class="qty-action-btn" onclick="updateVoucherItemQty('decrease', 'physical-voucher-form')">-</span><span class="qty-value">1</span><span class="qty-action-btn" onclick="updateVoucherItemQty('increase', 'physical-voucher-form')">+</span>
+											</span>
+										</div>
+									</div>
+
+								</form>
+							</div>
+						</f:if>
+						<div class="action-btns">
+							<button type="button" class="btn btn-primary add-to-cart m-w-100" onclick="checkForCart();"><f:translate key="addToCart" /></button>
+
+							<input type="hidden" value="emailTab" id="activeTab" />
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

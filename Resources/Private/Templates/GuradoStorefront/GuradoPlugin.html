@@ -1,0 +1,99 @@
+<f:if condition="{includeBootstrap} == 1">
+<div class="container">
+	<div class="row">
+		<div class="col-sm-12">
+</f:if>
+
+			<div class="gurado-storefront">
+				<div class="row">
+					<div class="col-sm-12">
+						<div class="text-center data-load-spinner" style="display: none;">
+						  <div class="spinner-border" role="status">
+							<span class="visually-hidden sr-only"><f:translate key="loading" />...</span>
+						  </div>
+						</div>
+						
+						<f:if condition="{showSettingsError} == 0">
+							<f:then>
+								<f:if condition="{settings.view} == 'list'">
+									<f:then>
+										<f:render partial="List" arguments="{storeProductsArray: storeProductsArray, showPagination: showPagination, paginationData: paginationData, pages: pages, settings: settings}" />
+									</f:then>
+									<f:else if="{settings.view} == 'detail'">
+										<f:render partial="Details" arguments="{productDetails: productDetails, showOptions: showOptions, settings: settings}" />
+									</f:else>
+									<f:else if="{settings.view} == 'cart'">
+										<f:render partial="Cart" arguments="{settings: settings}" />
+									</f:else>
+									<f:else if="{settings.view} == 'checkout'">
+										<f:render partial="Checkout" arguments="{countries: countries, agreements: agreements, settings: settings}" />
+									</f:else>
+									<f:else if="{settings.view} == 'payment'">
+										<f:render partial="Payment" arguments="{countries: countries, settings: settings}" />
+									</f:else>
+									<f:else if="{settings.view} == 'success'">
+										<f:render partial="Success" arguments="{settings: settings}" />
+									</f:else>
+								</f:if>
+							</f:then>
+							<f:else>
+								<div class="text-center block-heading">Some Settings are missing.<br />Please provide necessary settings</div>
+							</f:else>
+						</f:if>
+						
+					</div>
+				</div>
+			</div>
+			
+<f:if condition="{includeBootstrap} == 1">			
+		</div>
+	</div>
+</div>
+</f:if>
+<f:if condition="{settings.cartPid}">
+	<f:link.page pageUid="{settings.cartPid}" class="cart-icon" absolute="true" style="display: none;"><span><span class="cart-total">0</span><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-cart2" viewBox="0 0 16 16">
+  <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l1.25 5h8.22l1.25-5H3.14zM5 13a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z"/>
+</svg></span></f:link.page>
+</f:if>
+
+<div style="display: none;">
+	<div class="voucher-label"><f:translate key="voucher" /></div>
+	<div class="quantity-label"><f:translate key="quantity" /></div>
+	<div class="unit-price-label"><f:translate key="uniPrice" /></div>
+	<div class="row-total-label"><f:translate key="rowTotal" /></div>
+	<div class="subtotal-label"><f:translate key="subtotal" /></div>
+	<div class="tax-label"><f:translate key="tax" /></div>
+	<div class="tax-label-inlcuding"><f:translate key="taxIncluding" /></div>
+	<div class="tax-label-exlcuding"><f:translate key="taxExcluding" /></div>
+	<div class="total-label"><f:translate key="total" /></div>
+	<div class="process-error-message"><f:translate key="processErrorMessage" /></div>
+	<div class="update-label"><f:translate key="update" /></div>
+	<div class="remove-label"><f:translate key="delete" /></div>
+	<div class="edit-label"><f:translate key="edit" /></div>
+	<div class="edit-address-link">
+		<f:link.page pageUid="{settings.checkoutPid}" class="edit-link">
+			<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16"><path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/><path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/></svg>&nbsp; <f:translate key="edit" />
+		</f:link.page>
+	</div>
+	
+	<f:link.page pageUid="{f:cObject(typoscriptObjectPath:'lib.guradoStoreCurrentPageId')}" class="product-list" absolute="true"></f:link.page>
+	<f:link.page pageUid="{settings.listPid}" class="list-page" absolute="true">Cart</f:link.page>
+	<f:link.page pageUid="{settings.cartPid}" class="shopping-cart-page" absolute="true">Cart</f:link.page>
+	<f:link.page pageUid="{settings.checkoutPid}" class="checkout-page" absolute="true"></f:link.page>
+	<f:link.page pageUid="{settings.paymentPid}" class="payment-page" absolute="true"></f:link.page>
+	<f:link.page pageUid="{settings.successPid}" class="order-success-page" absolute="true"></f:link.page>
+</div>
+
+<script type="text/javascript">
+	
+	var priceConfigType = '{productDetails.price_configuration.type}';
+	if(priceConfigType == 'range' || priceConfigType == 'RANGE') {
+		var fromAmount = '{productDetails.price_configuration.from}';
+		var toAmount = '{productDetails.price_configuration.to}';
+	}
+	var allowPersonalizedMessage = '{productDetails.allow_personalized_message}';
+	var productHaveOptions = Number('{showOptions}');
+	var productDetailsCurrencyCode = '{productDetails.currency_code}';
+	var clientId = '{clientId}';
+	
+</script>

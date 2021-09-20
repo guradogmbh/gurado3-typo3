@@ -1,0 +1,45 @@
+<div class="gurado-storefront-cart">
+	<div class="have-cart-items cart-details" style="display:none;">
+		<div class="text-center">
+			<div class="progress-steps">
+				<span class="progress-line"></span>
+				<span class="steps active step-1">1<span class="label"><f:translate key="cart" /></span></span>
+				<span class="steps step-2">2<span class="label"><f:translate key="contactInfo" /></span></span>
+				<span class="steps step-3">3<span class="label"><f:translate key="payment" /></span></span>
+			</div>
+		</div>
+		<div class="text-center mb-4 block-heading desktop-only"><f:translate key="cart" /></div>
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="block-heading only-mobile"><f:translate key="cart" /></div>
+				<div id="cartTable" class="desktop-only"></div>
+				<div id="cartTableMobile" class="only-mobile"></div>
+			</div>
+		</div>
+		
+		<div class="row justify-content-right justify-content-end mt-4 cart-summary-block">
+			<div class="col-lg-4 col-md-5 col-sm-12">
+				<div class="storefront-block">
+					<div class="block-heading only-mobile"><f:translate key="orderSummary" /></div>
+					<div class="cartSummary"></div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="row mt-4 action-btns">
+			<div class="col-sm-12">
+				<f:link.page pageUid="{settings.checkoutPid}" class="btn btn-primary float-end float-right m-w-100"><f:translate key="proceed" /></f:link.page>
+				<f:link.page pageUid="{settings.listPid}" class="btn btn-primary m-w-100 m-mt-15 btn-invert"><f:translate key="addMoreVoucher" /></f:link.page>
+			</div>
+		</div>
+
+	</div>
+	<div class="no-cart" style="display:none;">
+		<div class='row'>
+			<div class='col-sm-12 cell cart-empty text-center'>
+				<div class='text-center d-mb-40 block-heading m-mb-30'><f:translate key="cartIsEmpty" /></div>
+				<f:link.page pageUid="{settings.listPid}" class="btn btn-primary m-w-100"><f:translate key="backToVoucherShop" /></f:link.page>
+			</div>
+		</div>
+	</div>
+</div>

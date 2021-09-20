@@ -1,0 +1,89 @@
+<div class="gurado-storefront-productlist">
+	<f:if condition="{storeProductsArray -> f:count()} > 0">
+		<f:then>
+			<div class="row justify-content-center">
+				<f:for each="{storeProductsArray}" as="storeProduct" iteration="iterator">
+					<div class="col-sm-6 col-md-3 mb-5 each-voucher">
+						<f:link.action action="guradoPlugin" pageUid="{settings.detailsPid}" arguments="{url: storeProduct.url_key}" noCacheHash="true">
+							<span class="card">
+								<f:if condition="{storeProduct.images -> f:count()}">
+									<f:then>
+										<f:for each="{storeProduct.images}" as="productImg" iteration="imgIterator">
+										<img src="{productImg.image_url}" width="{productImg.image_width}" height="{productImg.image_height}"  class="card-img-top loading" />
+										</f:for>
+									</f:then>
+									<f:else>
+										<img src="typo3conf/ext/gurado_storefront/Resources/Public/Icons/no-voucher-img.svg"  class="card-img-top" />
+									</f:else>
+								</f:if>
+								<span class="card-body text-center">
+									<span class="card-title">{storeProduct.name}</span>
+									<f:if condition="{storeProduct.price_configuration.type} == 'range' || {storeProduct.price_configuration.type} == 'RANGE'">
+										<f:then>
+											<span class="card-text price">
+												{storeProduct.price_configuration.from -> f:format.currency(thousandsSeparator: '.', decimalSeparator: ',', currencySign: '{storeProduct.currency_code}')} - {storeProduct.price_configuration.to -> f:format.currency(thousandsSeparator: '.', decimalSeparator: ',', currencySign: '{storeProduct.currency_code}')}
+											</span>
+										</f:then>
+										<f:else if="{storeProduct.price_configuration.type} == 'dropdown' || {storeProduct.price_configuration.type} == 'DROPDOWN'">
+											<span class="card-text price">
+												<f:for each="{storeProduct.price_configuration.options}" as="dropdownOption" iteration="dropdownOptionIterator">
+													<f:if condition="{dropdownOptionIterator.index} == 0">
+														{dropdownOption -> f:format.currency(thousandsSeparator: '.', decimalSeparator: ',', currencySign: '{storeProduct.currency_code}')} - 
+													</f:if>
+													<f:if condition="{dropdownOptionIterator.index} == {dropdownOptionIterator.total - 1}">
+														{dropdownOption -> f:format.currency(thousandsSeparator: '.', decimalSeparator: ',', currencySign: '{storeProduct.currency_code}')}
+													</f:if>
+												</f:for>
+											</span>
+										</f:else>
+										<f:else if="{storeProduct.price_configuration.type} == 'fixed' || {storeProduct.price_configuration.type} == 'FIXED'">
+											<span class="card-text price">
+												{storeProduct.price_configuration.amount -> f:format.currency(thousandsSeparator: '.', decimalSeparator: ',', currencySign: '{storeProduct.currency_code}')}
+											</span>
+										</f:else>
+										<f:else if="{storeProduct.price_configuration.type} == 'configurable' || {storeProduct.price_configuration.type} == 'CONFIGURABLE'">
+											<span class="card-text price">
+												<f:translate key="amountFrom" /> {storeProduct.price_configuration.minimum -> f:format.currency(thousandsSeparator: '.', decimalSeparator: ',', currencySign: '{storeProduct.currency_code}')}
+											</span>
+										</f:else>
+										<f:else>
+											<span class="card-text">
+												{storeProduct.price_configuration.amount} {storeProduct.currency_code}
+											</span>
+										</f:else>
+									</f:if>
+									
+								</span>
+							</span>
+						</f:link.action>
+					</div>
+				</f:for>
+			</div>
+			
+			<f:if condition="{showPagination} == 1">
+				<div class="row">
+					<div class="col-sm-12 text-center">
+						<ul class="pagination">
+							<f:for each="{pages}" as="pageNumber" iteration="iterator">
+								<f:if condition="{pageNumber} == {paginationData.current_page}">
+									<f:then>
+										<li class="current-page">{pageNumber}</li>
+									</f:then>
+									<f:else>
+										<li>
+											<a href="" data-page="{pageNumber}">{pageNumber}</a>
+										</li>
+									</f:else>
+								</f:if>
+							</f:for>
+						</ul>
+					</div>
+				</div>
+			</f:if>
+			
+		</f:then>
+		<f:else>
+			<div class="text-center block-heading"><f:translate key="noProductMessage" /></div>
+		</f:else>
+	</f:if>
+</div>

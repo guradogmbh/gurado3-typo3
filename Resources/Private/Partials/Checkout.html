@@ -1,0 +1,263 @@
+<div class="gurado-storefront-checkout">
+	<div class="have-cart-items checkout-details" style="display: none;">
+		<div class="text-center">
+			<div class="progress-steps">
+				<span class="progress-line"></span>
+				<span class="steps active step-1"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-lg" viewBox="0 0 16 16"><path d="M13.485 1.431a1.473 1.473 0 0 1 2.104 2.062l-7.84 9.801a1.473 1.473 0 0 1-2.12.04L.431 8.138a1.473 1.473 0 0 1 2.084-2.083l4.111 4.112 6.82-8.69a.486.486 0 0 1 .04-.045z"/></svg><span class="label"><f:translate key="cart" /></span></span>
+				<span class="steps step-2 active">2<span class="label"><f:translate key="contactInfo" /></span></span>
+				<span class="steps step-3">3<span class="label"><f:translate key="payment" /></span></span>
+			</div>
+		</div>
+		
+		<f:link.page pageUid="{settings.cartPid}" class="m-w-100 back-to-last-page">
+			<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-left" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/></svg><f:translate key="back" />
+		</f:link.page>
+		<div class="row">
+			<div class="col-sm-12 col-lg-7 billing-shipping-address">
+				<form class="checkout-form" novalidate>
+					<div class="user-email">
+						<div class="row form-row">
+							<div class="col-sm-12">
+								<div class="mb-4 block-heading"><f:translate key="contactInformation" /></div>
+								<label class="col-form-label pt-0"><f:translate key="recipientEmail" /> *</label>
+								<input type="email" class="form-control form-field" name="email_address" required />
+								<div class="invalid-feedback"><f:translate key="emailInvalid" /></div>
+							</div>
+						</div>
+					</div>
+					<div class="block-heading"><f:translate key="billingAddress" /></div>
+					<div>
+						<div class="row form-row have-company-data billing">
+							<div class="col-sm-12 col-md-6">
+								<div class="form-check mb-0">
+									<input class="form-check-input" type="radio" name="add_company_data_for_billing" id="add_company_data_for_billing_1" value="private" onclick="showHideCompnayDetailsBlock('billing');" checked />
+									<label class="form-check-label mb-0 pt-0" for="add_company_data_for_billing_1"><f:translate key="privateCustomer" /></label>
+								</div>
+							</div>
+							<div class="col-sm-12 col-md-6">
+								<div class="form-check mb-0">
+									<input class="form-check-input" type="radio" name="add_company_data_for_billing" id="add_company_data_for_billing_2" value="company" onclick="showHideCompnayDetailsBlock('billing');" />
+									<label class="form-check-label mb-0 pt-0" for="add_company_data_for_billing_2"><f:translate key="forCompany" /></label>
+								</div>
+							</div>
+						</div>
+						
+						<div class="row form-row">
+							<div class="col-sm-6">
+								<label class="col-form-label pt-0"><f:translate key="firstname" /> *</label>
+								<input type="text" class="form-control form-field" name="firstname" required />
+								<div class="invalid-feedback"><f:translate key="mandatoryField" /></div>
+							</div>
+							<div class="col-sm-6 field-at-new-line-in-small-device ">
+								<label class="col-form-label pt-0"><f:translate key="lastname" /> *</label>
+								<input type="text" class="form-control form-field" name="lastname" required />
+								<div class="invalid-feedback"><f:translate key="mandatoryField" /></div>
+							</div>
+						</div>
+						
+						<div class="row company-details-container form-row billing" style="display: none;">
+							<div class="col-sm-6">
+								<label class="col-form-label pt-0"><f:translate key="company" /></label>
+								<input type="text" class="form-control form-field" name="company_name" />
+							</div>
+							<div class="col-sm-6 field-at-new-line-in-small-device ">
+								<label class="col-form-label pt-0"><f:translate key="vat" /></label>
+								<input type="text" class="form-control form-field" name="vat_number" />
+							</div>
+						</div>
+
+						<div class="row form-row">
+							<div class="col-sm-6">
+								<label class="col-form-label pt-0"><f:translate key="street" /> *</label>
+								<input type="text" class="form-control form-field" name="street" required id="billing_street" placeholder="" />
+								<div class="invalid-feedback"><f:translate key="mandatoryField" /></div>
+							</div>
+							<div class="col-sm-6 field-at-new-line-in-small-device ">
+								<label class="col-form-label pt-0"><f:translate key="houseNumber" /> *</label>
+								<input type="text" class="form-control form-field" name="house_number" required id="billing_house_number" />
+								<div class="invalid-feedback"><f:translate key="mandatoryField" /></div>
+							</div>
+						</div>
+						
+						<div class="row form-row">
+							<div class="col-sm-6">
+								<label class="col-form-label pt-0"><f:translate key="postcode" /> *</label>
+								<input type="text" class="form-control form-field" name="postcode" required id="billing_postcode" />
+								<div class="invalid-feedback"><f:translate key="mandatoryField" /></div>
+							</div>
+							<div class="col-sm-6 field-at-new-line-in-small-device ">
+								<label class="col-form-label pt-0"><f:translate key="city" /> *</label>
+								<input type="text" class="form-control form-field" name="city" required id="billing_city" />
+								<div class="invalid-feedback"><f:translate key="mandatoryField" /></div>
+							</div>
+						</div>
+
+						<div class="row form-row">
+							<div class="col-sm-12">
+								<label class="col-form-label pt-0"><f:translate key="countries" /> *</label>
+								<span class="select-wrap">
+									<select class="form-control form-field" name="country_code" required id="billing_country">
+										<option value="" disabled selected></option>
+										<f:for each="{countries}" as="country">
+											<option value="{country.code}">{country.name}</option>
+										</f:for>
+									</select>
+									<div class="invalid-feedback"><f:translate key="mandatoryField" /></div>
+								</span>
+							</div>
+						</div>	
+						
+						<div class="row last-child form-row">
+							<div class="col-sm-12">
+								<label class="col-form-label pt-0"><f:translate key="phoneNumber" /></label>
+								<input type="tel" class="form-control form-field" name="phone_number" pattern="[0-9-( )+]+$" />
+								<div class="invalid-feedback"><f:translate key="phoneNumberNotValid" /></div>
+							</div>
+						</div>
+
+						<div class="form-row is-billing-shipping-checkbox">
+							<div class="form-check mb-0">
+								<input class="form-check-input" type="checkbox" name="is_billing_shipping_same" id="is_billing_shipping_same" value="1" onclick="showHideShippingAddrBlock();" checked />
+								<label class="form-check-label mb-0" for="is_billing_shipping_same"><f:translate key="billingShippingSame" /></label>
+							</div>
+						</div>
+						
+					</div>
+					<div class="shipping-address-block" style="display: none;">
+						<div class="block-heading"><f:translate key="shippingAddressForPost" /></div>
+						<div>
+							<div class="row form-row have-company-data shipping">
+								<div class="col-sm-12 col-md-6">
+									<div class="form-check mb-0">
+										<input class="form-check-input" type="radio" name="add_company_data_for_shipping" id="add_company_data_for_shipping_1" value="private" onclick="showHideCompnayDetailsBlock('shipping');" checked />
+										<label class="form-check-label mb-0 pt-0" for="add_company_data_for_shipping_1"><f:translate key="privateCustomer" /></label>
+									</div>
+								</div>
+								<div class="col-sm-12 col-md-6">
+									<div class="form-check mb-0">
+										<input class="form-check-input" type="radio" name="add_company_data_for_shipping" id="add_company_data_for_shipping_2" value="company" onclick="showHideCompnayDetailsBlock('shipping');" />
+										<label class="form-check-label mb-0 pt-0" for="add_company_data_for_shipping_2"><f:translate key="forCompany" /></label>
+									</div>
+								</div>
+							</div>
+							
+							<div class="row form-row">
+								<div class="col-sm-6">
+									<label class="col-form-label pt-0"><f:translate key="firstname" /> *</label>
+									<input type="text" class="form-control form-field is-required" name="shipping_firstname" />
+									<div class="mandatory-err"><f:translate key="mandatoryField" /></div>
+								</div>
+								<div class="col-sm-6 field-at-new-line-in-small-device">
+									<label class="col-form-label pt-0"><f:translate key="lastname" /> *</label>
+									<input type="text" class="form-control form-field is-required" name="shipping_lastname" />
+									<div class="mandatory-err"><f:translate key="mandatoryField" /></div>
+								</div>
+							</div>
+							
+							<div class="row company-details-container form-row shipping" style="display: none;">
+								<div class="col-sm-12">
+									<label class="col-form-label pt-0"><f:translate key="company" /></label>
+									<input type="text" class="form-control form-field" name="shipping_company_name" />
+								</div>
+							</div>
+							
+							<div class="row form-row">
+								<div class="col-sm-6">
+									<label class="col-form-label pt-0"><f:translate key="street" /> *</label>
+									<input type="text" class="form-control form-field is-required" name="shipping_street" id="shipping_street" placeholder="" />
+									<div class="mandatory-err"><f:translate key="mandatoryField" /></div>
+								</div>
+								<div class="col-sm-6 field-at-new-line-in-small-device ">
+									<label class="col-form-label pt-0"><f:translate key="houseNumber" /> *</label>
+									<input type="text" class="form-control form-field is-required" name="shipping_house_number" id="shipping_house_number" />
+									<div class="mandatory-err"><f:translate key="mandatoryField" /></div>
+								</div>
+							</div>
+							
+							<div class="row form-row">
+								<div class="col-sm-6">
+									<label class="col-form-label pt-0"><f:translate key="postcode" /> *</label>
+									<input type="text" class="form-control form-field is-required" name="shipping_postcode" id="shipping_postcode" />
+									<div class="mandatory-err"><f:translate key="mandatoryField" /></div>
+								</div>
+								<div class="col-sm-6 field-at-new-line-in-small-device ">
+									<label class="col-form-label pt-0"><f:translate key="city" /> *</label>
+									<input type="text" class="form-control form-field is-required" name="shipping_city" id="shipping_city" />
+									<div class="mandatory-err"><f:translate key="mandatoryField" /></div>
+								</div>
+							</div>
+
+							<div class="row form-row">
+								<div class="col-sm-12">
+									<label class="col-form-label pt-0"><f:translate key="countries" /> *</label>
+									<span class="select-wrap">
+										<select class="form-control form-field is-required" name="shipping_country_code" id="shipping_country">
+											<option value="" disabled selected></option>
+											<f:for each="{countries}" as="country">
+												<option value="{country.code}">{country.name}</option>
+											</f:for>
+										</select>
+										<div class="mandatory-err"><f:translate key="mandatoryField" /></div>
+									</span>
+								</div>
+							</div>	
+
+							<div class="row last-child form-row">
+								<div class="col-sm-12">
+									<label class="col-form-label pt-0"><f:translate key="phoneNumber" /></label>
+									<input type="tel" class="form-control form-field" name="shipping_phone_number" pattern="[0-9-( )+]+$" />
+									<div class="invalid-feedback"><f:translate key="phoneNumberNotValid" /></div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<input type="hidden" class="hidden requires-shipping" name="requires_shipping" value="" />
+					
+					<div>
+						<f:if condition="{agreements -> f:count()} > 0">
+							<div class="row form-row terms-and-conditions">
+								<div class="col-sm-12 terms-and-conditions-label pb-2" style="display: none;"><f:translate key="termsAndConditionsLabel" /></div>
+								<div class="col-sm-12">
+									<f:for each="{agreements}" as="agreement" iteration="agreementsIterator">
+										<div class="form-check pt-2">
+											<input class="form-check-input" type="checkbox" value="{agreement.agreement_id}" id="termsAndConditions_{agreement.agreement_id}">
+											<a href="#" class="page-popup" data-id="{agreement.agreement_id}">
+												<label class="form-check-label mb-0">{agreement.title}</label>
+											</a>
+										</div>
+									</f:for>
+								</div>
+								<div class="col-sm-12 invalid-feedback checkbox-mandatory-error pt-3" style="display: none; margin-top: -5px;"><f:translate key="mandatoryField" /></div>
+							</div>
+						</f:if>
+						<button type="submit" class="btn btn-primary m-w-100" onclick="proceedToPayment(event);"><f:translate key="reviewAndPay" /></button>
+						<input type="hidden" class="requires-agreement-acceptance" value="" />
+					</div>
+				</form>
+
+			</div>
+			<div class="col-sm-12 col-lg-5 cart last-child-first-from-tab">
+				<div class="block-heading collapse-btn">
+					<f:translate key="cart" />
+				</div>
+				<div class="collapse-div">
+					<div class="cart-items storefront-block">
+						<div id="cartTableMobile"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="modal fade" id="termsAndConditionsPopupModal" tabindex="-1" role="dialog" aria-labelledby="termsAndConditionsPopupModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title font-blue"></h5>
+				<button type="button" class="modal-close" onclick="closeModalPopup(event);">X</button>
+			</div>
+			<div class="modal-body"></div>
+		</div>
+	</div>
+</div>

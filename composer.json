@@ -1,0 +1,23 @@
+{
+    "name": "gurado/gurado-storefront",
+    "type": "typo3-cms-extension",
+    "description": "Kunden, ihre Gutscheine und Tickets ganz einfach die Typo3-Website einbinden und verkaufen",
+    "authors": [
+        {
+            "name": "gurado",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "typo3/cms-core": ">=8.7"
+    },
+    "autoload": {
+        "psr-4": {
+            "Gurado\\GuradoStorefront\\": "Classes"
+        }
+    },
+    "replace": {
+        "gurado/gurado-storefront": "self.version",
+        "typo3-ter/gurado-storefront": "self.version"
+    }
+}

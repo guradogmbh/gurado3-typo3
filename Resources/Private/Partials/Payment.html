@@ -1,0 +1,60 @@
+<div class="gurado-storefront-payment">
+	<div class="have-cart-items cart-details" style="display:none;">
+		<div class="text-center">
+			<div class="progress-steps">
+				<span class="progress-line"></span>
+				<span class="steps active step-1"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-lg" viewBox="0 0 16 16"><path d="M13.485 1.431a1.473 1.473 0 0 1 2.104 2.062l-7.84 9.801a1.473 1.473 0 0 1-2.12.04L.431 8.138a1.473 1.473 0 0 1 2.084-2.083l4.111 4.112 6.82-8.69a.486.486 0 0 1 .04-.045z"/></svg><span class="label"><f:translate key="cart" /></span></span>
+				<span class="steps active step-2"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-lg" viewBox="0 0 16 16"><path d="M13.485 1.431a1.473 1.473 0 0 1 2.104 2.062l-7.84 9.801a1.473 1.473 0 0 1-2.12.04L.431 8.138a1.473 1.473 0 0 1 2.084-2.083l4.111 4.112 6.82-8.69a.486.486 0 0 1 .04-.045z"/></svg><span class="label"><f:translate key="contactInfo" /></span></span>
+				<span class="steps active step-3">3<span class="label"><f:translate key="payment" /></span></span>
+			</div>
+		</div>
+		<f:link.page pageUid="{settings.checkoutPid}" class="m-w-100 back-to-last-page">
+			<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-left" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/></svg><f:translate key="back" />
+		</f:link.page>
+		<div class="row">
+			<div class="col-sm-12 col-lg-7 order-summary">
+				<div class="storefront-block">
+					<div class="row">
+						<div class="col-sm-12 billing-address">
+							<div class="block-heading"><f:translate key="billingAddress" /></div>
+							<div class="billingAddressText"></div>
+						</div>
+						<div class="col-sm-12 shipping-address-block">
+							<div class="block-heading shipping-address-heading"><f:translate key="shippingAddress" /></div>
+							<div class="billingAddressText"></div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-sm-12 payments storefront-block">
+					<div class="block-heading"><f:translate key="choosePaymentMethod" /></div>
+					<div id="gurado-payments-container"></div>
+				</div>
+
+			</div>
+			
+			<div class="col-sm-12 col-lg-5 cart last-child-first-from-tab">
+				<div class="block-heading collapse-btn">
+					<f:translate key="orderSummary" />
+				</div>
+				<div class="collapse-div">
+					<div class="cart-items storefront-block">
+						<div id="cartTableMobile"></div>
+						<div class="cartSummary"></div>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+	<select class="form-control billing-addr-countries-select hidden">
+		<f:for each="{countries}" as="country">
+			<option value="{country.code}">{country.name}</option>
+		</f:for>
+	</select>
+	<select class="form-control shipping-addr-countries-select hidden">
+		<f:for each="{countries}" as="country">
+			<option value="{country.code}">{country.name}</option>
+		</f:for>
+	</select>
+</div>

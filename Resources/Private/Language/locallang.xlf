@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="EXT:gurado_storefront/Resources/Private/Language/locallang" date="2021-06-02T08:59:57Z" product-name="gurado_storefront">
+		<header/>
+		<body>
+			<trans-unit id="tx_guradostorefront_domain_model_guradostorefront" resname="tx_guradostorefront_domain_model_guradostorefront">
+				<source>Gurado Storefront</source>
+			</trans-unit>
+			<trans-unit id="tx_guradostorefront_domain_model_guradostorefront.storecode" resname="tx_guradostorefront_domain_model_guradostorefront.storecode">
+				<source>Storecode</source>
+			</trans-unit>
+			<trans-unit id="voucher">
+				<source>Gutscheine</source>
+			</trans-unit>
+			<trans-unit id="back">
+				<source>Zurück</source>
+			</trans-unit>
+			<trans-unit id="backToVoucher">
+				<source>zurück zum Gutscheine</source>
+			</trans-unit>
+			<trans-unit id="backToVoucherShop">
+				<source>zurück zu den Gutscheinen</source>
+			</trans-unit>
+			<trans-unit id="voucherDetails">
+				<source>Gutscheinvorschau</source>
+			</trans-unit>
+			<trans-unit id="selectShippingMethod">
+				<source>Versandmethode wählen</source>
+			</trans-unit>
+			<trans-unit id="email">
+				<source>E-Mail</source>
+			</trans-unit>
+			<trans-unit id="chooseMotiv">
+				<source>Motiv wählen</source>
+			</trans-unit>
+			<trans-unit id="availableTemplate">
+				<source>Gutscheinmotiv</source>
+			</trans-unit>
+			<trans-unit id="personalization">
+				<source>Personalisierung</source>
+			</trans-unit>
+			<trans-unit id="amount">
+				<source>Betrag</source>
+			</trans-unit>
+			<trans-unit id="addToCart">
+				<source>In den Warenkorb</source>
+			</trans-unit>
+			<trans-unit id="voucherReceiveMethod">
+				<source>Wer erhält den Gutschein?</source>
+			</trans-unit>
+			<trans-unit id="voucherReceiveMethodOption1">
+				<source>ich</source>
+			</trans-unit>
+			<trans-unit id="voucherReceiveMethodOption2">
+				<source>der Beschenkte</source>
+			</trans-unit>
+			<trans-unit id="personalMessage">
+				<source>Persönliche Nachricht</source>
+			</trans-unit>
+			<trans-unit id="deliverySpeedMethodOption1">
+				<source>sofortiger Versand</source>
+			</trans-unit>
+			<trans-unit id="deliverySpeedMethodOption2">
+				<source>Versand mit zukünftigem Lieferdatum</source>
+			</trans-unit>
+			<trans-unit id="deliverySpeedMethodOption2Message">
+				<source>Möchtest Du ein abweichendes Versanddatum, wähle bitte hier dein Wunschtermin aus</source>
+			</trans-unit>
+			<trans-unit id="quantity">
+				<source>Menge</source>
+			</trans-unit>
+			<trans-unit id="physicalVoucherDeliveryNote">
+				<source>Nach erfolgreichem Zahlungseingang werden die bestellten Gutscheine am nächsten Werktag versendet.</source>
+			</trans-unit>
+			<trans-unit id="deliveryAddress">
+				<source>Versandadresse</source>
+			</trans-unit>
+			<trans-unit id="gender">
+				<source>Anrede</source>
+			</trans-unit>
+			<trans-unit id="genderOption1">
+				<source>Herr</source>
+			</trans-unit>
+			<trans-unit id="genderOption2">
+				<source>Frau</source>
+			</trans-unit>
+			<trans-unit id="firstname">
+				<source>Vorname</source>
+			</trans-unit>
+			<trans-unit id="lastname">
+				<source>Nachname</source>
+			</trans-unit>
+			<trans-unit id="houseNumber">
+				<source>Hausnummer</source>
+			</trans-unit>
+			<trans-unit id="street">
+				<source>Strasse</source>
+			</trans-unit>
+			<trans-unit id="postcode">
+				<source>PLZ</source>
+			</trans-unit>
+			<trans-unit id="city">
+				<source>Ort</source>
+			</trans-unit>
+			<trans-unit id="countries">
+				<source>Land</source>
+			</trans-unit>
+			<trans-unit id="from">
+				<source>Für</source>
+			</trans-unit>
+			<trans-unit id="to">
+				<source>Von</source>
+			</trans-unit>
+			<trans-unit id="personalMessageToRecipient">
+				<source>Deine persönliche Nachricht an den Empfänger:</source>
+			</trans-unit>
+			<trans-unit id="physicalVoucherDeliveryEmailNote">
+				<source>Vorab mailen wir Dir einen PDF-Gutschein, falls sich der Postversand verzögert. Hierfür brauchen wir eine E-Mail-Adresse:</source>
+			</trans-unit>
+			<trans-unit id="mandatoryField">
+				<source>Pflichtfeld</source>
+			</trans-unit>
+			<trans-unit id="emailInvalid">
+				<source>Bitte eine gültige E-Mail angeben</source>
+			</trans-unit>
+			<trans-unit id="remainingCharacters">
+				<source>Verbleibende Zeichen</source>
+			</trans-unit>
+			<trans-unit id="loading">
+				<source>Lade</source>
+			</trans-unit>
+			<trans-unit id="enterAmountBetween">
+				<source>Bitte Betrag zwischen eingebe</source>
+			</trans-unit>
+			<trans-unit id="voucherByEmailTabName">
+				<source>E-Mail</source>
+			</trans-unit>
+			<trans-unit id="voucherByPostTabName">
+				<source>Post</source>
+			</trans-unit>
+			<trans-unit id="physicalVoucherTaxNote">
+				<source>+ Versand per Post 4,79 € inkl. MwSt.</source>
+			</trans-unit>
+			<trans-unit id="billingAddress">
+				<source>Rechnungsadresse</source>
+			</trans-unit>
+			<trans-unit id="summary">
+				<source>Zusammenfassung</source>
+			</trans-unit>
+			<trans-unit id="placeOrder">
+				<source>Bestellen</source>
+			</trans-unit>
+			<trans-unit id="uniPrice">
+				<source>Einzelpreis</source>
+			</trans-unit>
+			<trans-unit id="rowTotal">
+				<source>Betrag</source>
+			</trans-unit>
+			<trans-unit id="subtotal">
+				<source>Zwischensumme</source>
+			</trans-unit>
+			<trans-unit id="tax">
+				<source>Steuer</source>
+			</trans-unit>
+			<trans-unit id="taxIncluding">
+				<source>Inkl. Steuer</source>
+			</trans-unit>
+			<trans-unit id="taxExcluding">
+				<source>Zzgl Steuer</source>
+			</trans-unit>
+			<trans-unit id="total">
+				<source>Gesamtsumme</source>
+			</trans-unit>
+			<trans-unit id="orderPlacedSuccessfully">
+				<source>Vielen Dank für Ihre Bestellung</source>
+			</trans-unit>
+			<trans-unit id="cartIsEmpty">
+				<source>Der Warenkorb ist leer !</source>
+			</trans-unit>
+			<trans-unit id="processErrorMessage">
+				<source>Ein Fehler ist aufgetreten Bitte versuchen Sie es erneut</source>
+			</trans-unit>
+			<trans-unit id="pleaseSelect">
+				<source>Bitte auswählen:</source>
+			</trans-unit>
+			<trans-unit id="orderSummary">
+				<source>Zusammenfassung der Bestellung</source>
+			</trans-unit>
+			<trans-unit id="close">
+				<source>Schließen</source>
+			</trans-unit>
+			<trans-unit id="proceed">
+				<source>Zur Kasse</source>
+			</trans-unit>
+			<trans-unit id="payments">
+				<source>Zahlungsinformation</source>
+			</trans-unit>
+			<trans-unit id="choosePaymentMethod">
+				<source>Zahlungsart auswählen</source>
+			</trans-unit>
+			<trans-unit id="totalToPay">
+				<source>Gesamtsumme</source>
+			</trans-unit>
+			<trans-unit id="showDetails">
+				<source>Details anzeigen</source>
+			</trans-unit>
+			<trans-unit id="hideDetails">
+				<source>Details ausblenden</source>
+			</trans-unit>
+			<trans-unit id="voucherRecipientName">
+				<source>Name des Gutscheinempfängers</source>
+			</trans-unit>
+			<trans-unit id="voucherRecipientEmail">
+				<source>E-Mail des Gutscheinempfängers</source>
+			</trans-unit>
+			<trans-unit id="reviewAndPay">
+				<source>Prüfen und bezahlen</source>
+			</trans-unit>
+			<trans-unit id="noProductMessage">
+				<source>Keine Gutscheine verfügbar</source>
+			</trans-unit>
+			<trans-unit id="previous">
+				<source>Vorheriger</source>
+			</trans-unit>
+			<trans-unit id="next">
+				<source>Nächster</source>
+			</trans-unit>
+			<trans-unit id="cart">
+				<source>Warenkorb</source>
+			</trans-unit>
+			<trans-unit id="orderSummary">
+				<source>Bestellübersicht</source>
+			</trans-unit>
+			<trans-unit id="addMoreVoucher">
+				<source>Weiter einkaufen</source>
+			</trans-unit>
+			<trans-unit id="information">
+				<source>Information</source>
+			</trans-unit>
+			<trans-unit id="payment">
+				<source>Zahlung</source>
+			</trans-unit>
+			<trans-unit id="contactInfo">
+				<source>Kontaktinfo</source>
+			</trans-unit>
+			<trans-unit id="contactInformation">
+				<source>Kontaktinformation</source>
+			</trans-unit>
+			<trans-unit id="company">
+				<source>Firma</source>
+			</trans-unit>
+			<trans-unit id="vat">
+				<source>USt-IdNr.</source>
+			</trans-unit>
+			<trans-unit id="phoneNumber">
+				<source>Telefon</source>
+			</trans-unit>
+			<trans-unit id="phoneNumberNotValid">
+				<source>Telnr. ungültig</source>
+			</trans-unit>
+			<trans-unit id="shippingAddress">
+				<source>Versandadresse</source>
+			</trans-unit>
+			<trans-unit id="shippingAddressForPost">
+				<source>Versandadresse für Postgutscheine</source>
+			</trans-unit>
+			<trans-unit id="billingShippingSame">
+				<source>Meine Rechnungs- und Versandadresse sind gleich</source>
+			</trans-unit>
+			<trans-unit id="deliverTo">
+				<source>Liefern an</source>
+			</trans-unit>
+			<trans-unit id="edit">
+				<source>Bearbeiten</source>
+			</trans-unit>
+			<trans-unit id="delete">
+				<source>Löschen</source>
+			</trans-unit>
+			<trans-unit id="update">
+				<source>Aktualisieren</source>
+			</trans-unit>
+			<trans-unit id="privateCustomer">
+				<source>Privatkunde</source>
+			</trans-unit>
+			<trans-unit id="forCompany">
+				<source>Firma</source>
+			</trans-unit>
+			<trans-unit id="termsAndConditionsLabel">
+				<source>Mit dem Klick auf "Prüfen und bezahlen" erklären Sie sich mit den Datenschutzbestimmungen, AGBs und Widerrufsbestimmungen einverstanden.</source>
+			</trans-unit>
+			<trans-unit id="recipientEmail">
+				<source>E-Mail des Rechnungsempfängers</source>
+			</trans-unit>
+			<trans-unit id="amountFrom">
+				<source>ab</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

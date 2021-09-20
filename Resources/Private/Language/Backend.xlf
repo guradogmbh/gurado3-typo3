@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="EXT:gurado_storefront/Resources/Private/Language/Backend" date="2021-06-02T08:59:57Z" product-name="gurado_storefront">
+		<header/>
+		<body>
+			<trans-unit id="guradostorefront.generalSettings">
+				<source>General Settings</source>
+			</trans-unit>
+			<trans-unit id="guradostorefront.otherSettings">
+				<source>Other Settings</source>
+			</trans-unit>
+			<trans-unit id="guradostorefront.includes">
+				<source>Includes</source>
+			</trans-unit>
+			<trans-unit id="guradostorefront.includeJquery">
+				<source>Include JQuery: Include Jquery In your site. Note that if your website already includes complete jquery then uncheck this field.</source>
+			</trans-unit>
+			<trans-unit id="guradostorefront.includeBootstrap">
+				<source>Include Bootstrap: Include Bootstrap In your site. Note that if your website already includes bootstrap then uncheck this field.</source>
+			</trans-unit>
+			<trans-unit id="guradostorefront.authToken">
+				<source>Access Token: Add Access Token from your shop's Dashboard</source>
+			</trans-unit>
+			<trans-unit id="guradostorefront.clientId">
+				<source>Consumer Key: Add Consumer Key from your shop's Dashboard</source>
+			</trans-unit>
+			<trans-unit id="guradostorefront.selectView">
+				<source>Select View</source>
+			</trans-unit>
+			<trans-unit id="guradostorefront.list">
+				<source>List</source>
+			</trans-unit>
+			<trans-unit id="guradostorefront.detail">
+				<source>Details</source>
+			</trans-unit>
+			<trans-unit id="guradostorefront.cart">
+				<source>Cart</source>
+			</trans-unit>
+			<trans-unit id="guradostorefront.checkout">
+				<source>Checkout</source>
+			</trans-unit>
+			<trans-unit id="guradostorefront.payment">
+				<source>Payment</source>
+			</trans-unit>
+			<trans-unit id="guradostorefront.success">
+				<source>Order Success</source>
+			</trans-unit>
+			<trans-unit id="guradostorefront.storeconfig">
+				<source>gurado Store Config</source>
+			</trans-unit>
+			<trans-unit id="guradostorefront.voucherDetailsPid">
+				<source>Details Page id</source>
+			</trans-unit>
+			<trans-unit id="guradostorefront.voucherListPid">
+				<source>List Page id</source>
+			</trans-unit>
+			<trans-unit id="guradostorefront.cartPid">
+				<source>Cart Page id</source>
+			</trans-unit>
+			<trans-unit id="guradostorefront.orderSuccessPid">
+				<source>Order Success Page id</source>
+			</trans-unit>
+			<trans-unit id="guradostorefront.checkoutPid">
+				<source>Checkout Page id</source>
+			</trans-unit>
+			<trans-unit id="guradostorefront.paymentPid">
+				<source>Payment Page id</source>
+			</trans-unit>
+			<trans-unit id="guradostorefront.settings">
+				<source>Settings</source>
+			</trans-unit>
+			<trans-unit id="guradostorefront.showVoucherImgInDetails">
+				<source>Show Product Image?</source>
+			</trans-unit>
+			<trans-unit id="guradostorefront.positionAndAlignment">
+				<source>Position and Alignment of Image (This field will only work if above flag "Show Product Image?" is ON)</source>
+			</trans-unit>
+			<trans-unit id="guradostorefront.selectGuradoCategories">
+				<source>Select gurado Categories</source>
+			</trans-unit>
+			<trans-unit id="guradostorefront.aboveCenter">
+				<source>Above, center</source>
+			</trans-unit>
+			<trans-unit id="guradostorefront.aboveLeft">
+				<source>Above, left</source>
+			</trans-unit>
+			<trans-unit id="guradostorefront.aboveRight">
+				<source>Above, right</source>
+			</trans-unit>
+			<trans-unit id="guradostorefront.bottomCenter">
+				<source>Bottom, center</source>
+			</trans-unit>
+			<trans-unit id="guradostorefront.bottomLeft">
+				<source>Bottom, left</source>
+			</trans-unit>
+			<trans-unit id="guradostorefront.bottomRight">
+				<source>Bottom, right</source>
+			</trans-unit>
+			<trans-unit id="guradostorefront.inTextLeft">
+				<source>In text, left</source>
+			</trans-unit>
+			<trans-unit id="guradostorefront.inTextRight">
+				<source>In text, right</source>
+			</trans-unit>
+			<trans-unit id="guradostorefront.textColor">
+				<source>Font Color</source>
+			</trans-unit>
+			<trans-unit id="guradostorefront.headingColor">
+				<source>Headings Color</source>
+			</trans-unit>
+			<trans-unit id="guradostorefront.linkColor">
+				<source>Link Color</source>
+			</trans-unit>
+			<trans-unit id="guradostorefront.buttonColor">
+				<source>Button Color</source>
+			</trans-unit>
+			<trans-unit id="guradostorefront.buttonTextColor">
+				<source>Button Text Color</source>
+			</trans-unit>
+			<trans-unit id="guradostorefront.borderColor">
+				<source>Border Color</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

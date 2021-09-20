@@ -1,0 +1,48 @@
+
+plugin.tx_guradostorefront {
+	view {
+        templateRootPaths.0 = EXT:gurado_storefront/Resources/Private/Templates/
+        templateRootPaths.1 = {$plugin.tx_guradostorefront.view.templateRootPath}
+        partialRootPaths.0 = EXT:gurado_storefront/Resources/Private/Partials/
+        partialRootPaths.1 = {$plugin.tx_guradostorefront.view.partialRootPath}
+    }
+	features {
+        # Should be on by default, but can be disabled if all action in the plugin are uncached
+        requireCHashArgumentForActionArguments = 0
+    }
+}
+
+lib.guradoStoreCurrentPageId = TEXT
+lib.guradoStoreCurrentPageId.data = page:uid
+
+config.pageTitleProviders {
+    tx_guradostorefront {
+        provider = Gurado\GuradoStorefront\PageTitle\GuradoPageTitleProvider
+        before = record
+    }
+}
+
+page.meta.viewport = width=device-width, initial-scale=1, shrink-to-fit=no
+
+##### Jquery UI + extension Css File
+page.headerData.105 = TEXT
+page.headerData.105.wrap = |
+page.headerData.105.value (
+	<link rel="stylesheet" href="typo3conf/ext/gurado_storefront/Resources/Public/Css/jquery-ui.css" />
+)
+page.headerData.106 = TEXT
+page.headerData.106.wrap = |
+page.headerData.106.value (
+	<link rel="stylesheet" href="typo3conf/ext/gurado_storefront/Resources/Public/Css/gurado-storefront.css" />
+)
+
+
+##### Jquery UI + extension Js File
+page.footerData.105 = TEXT
+page.footerData.105.wrap = |
+page.footerData.105.value (
+	<script src="typo3conf/ext/gurado_storefront/Resources/Public/Js/jquery-ui.js"></script>
+	<script src="https://maps.google.com/maps/api/js?key=AIzaSyAqpcBSLekGTL-A2dLcf5zpM53Yjj0z05Q&sensor=false&libraries=places"></script>
+	<script src="typo3conf/ext/gurado_storefront/Resources/Public/Js/gurado-storefront.js"></script>
+	<script src="typo3conf/ext/gurado_storefront/Resources/Public/Js/cart.js"></script>
+)

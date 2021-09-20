@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3DataStructure>
+    <sheets>
+        <sDEF>
+            <ROOT>
+                <TCEforms>
+                    <sheetTitle>LLL:EXT:gurado_storefront/Resources/Private/Language/Backend.xlf:guradostorefront.generalSettings</sheetTitle>
+                </TCEforms>
+                <type>array</type>
+                <el>
+					<settings.view>
+						<TCEforms>
+							<onChange>reload</onChange>
+							<label>
+                                LLL:EXT:gurado_storefront/Resources/Private/Language/Backend.xlf:guradostorefront.selectView
+                            </label>
+							<config>
+								<type>select</type>
+                                <renderType>selectSingle</renderType>
+								<default>list</default>
+								<items type="array">
+									<numIndex index="0" type="array">
+                                        <numIndex index="0">
+                                            LLL:EXT:gurado_storefront/Resources/Private/Language/Backend.xlf:guradostorefront.list
+                                        </numIndex>
+                                        <numIndex index="1">list</numIndex>
+                                    </numIndex>
+									<numIndex index="1" type="array">
+                                        <numIndex index="0">
+                                            LLL:EXT:gurado_storefront/Resources/Private/Language/Backend.xlf:guradostorefront.detail
+                                        </numIndex>
+                                        <numIndex index="1">detail</numIndex>
+                                    </numIndex>
+									<numIndex index="2" type="array">
+                                        <numIndex index="0">
+                                            LLL:EXT:gurado_storefront/Resources/Private/Language/Backend.xlf:guradostorefront.cart
+                                        </numIndex>
+                                        <numIndex index="1">cart</numIndex>
+                                    </numIndex>
+									<numIndex index="3" type="array">
+                                        <numIndex index="0">
+                                            LLL:EXT:gurado_storefront/Resources/Private/Language/Backend.xlf:guradostorefront.checkout
+                                        </numIndex>
+                                        <numIndex index="1">checkout</numIndex>
+                                    </numIndex>
+									<numIndex index="4" type="array">
+                                        <numIndex index="0">
+                                            LLL:EXT:gurado_storefront/Resources/Private/Language/Backend.xlf:guradostorefront.payment
+                                        </numIndex>
+                                        <numIndex index="1">payment</numIndex>
+                                    </numIndex>
+									<numIndex index="5" type="array">
+                                        <numIndex index="0">
+                                            LLL:EXT:gurado_storefront/Resources/Private/Language/Backend.xlf:guradostorefront.success
+                                        </numIndex>
+                                        <numIndex index="1">success</numIndex>
+                                    </numIndex>
+								</items>
+								<maxitems>1</maxitems>
+							</config>
+						</TCEforms>
+					</settings.view>
+					<settings.guradoCategories>
+						<TCEforms>
+							<label>LLL:EXT:gurado_storefront/Resources/Private/Language/Backend.xlf:guradostorefront.selectGuradoCategories</label>
+							<config>
+								<type>select</type>
+								<itemsProcFunc>Gurado\GuradoStorefront\Helper\ItemsProcFunc->user_guradoCategories</itemsProcFunc>
+								<renderType>selectSingle</renderType>
+								<maxitems>1</maxitems>
+								<items>
+									<!-- empty by default -->
+								</items>
+							</config>
+							<displayCond>FIELD:settings.view:=:list</displayCond>
+						</TCEforms>
+					</settings.guradoCategories>
+					<settings.showVoucherImgInDetails>
+						<TCEforms>
+							<label>
+                                LLL:EXT:gurado_storefront/Resources/Private/Language/Backend.xlf:guradostorefront.showVoucherImgInDetails
+                            </label>
+							<config>
+								<type>check</type>
+								<default>0</default>
+							</config>
+							<displayCond>FIELD:settings.view:=:detail</displayCond>
+						</TCEforms>
+					</settings.showVoucherImgInDetails>
+					<settings.detailsImgPosition>
+						<TCEforms>
+							<label>
+                                LLL:EXT:gurado_storefront/Resources/Private/Language/Backend.xlf:guradostorefront.positionAndAlignment
+                            </label>
+							<config>
+								<type>select</type>
+                                <renderType>selectSingle</renderType>
+								<default>above-center</default>
+								<items type="array">
+									<numIndex index="0" type="array">
+                                        <numIndex index="0">LLL:EXT:gurado_storefront/Resources/Private/Language/Backend.xlf:guradostorefront.aboveCenter</numIndex>
+                                        <numIndex index="1">above-center</numIndex>
+                                    </numIndex>
+									<numIndex index="1" type="array">
+                                        <numIndex index="0">LLL:EXT:gurado_storefront/Resources/Private/Language/Backend.xlf:guradostorefront.aboveRight</numIndex>
+                                        <numIndex index="1">above-right</numIndex>
+                                    </numIndex>
+									<numIndex index="2" type="array">
+                                        <numIndex index="0">LLL:EXT:gurado_storefront/Resources/Private/Language/Backend.xlf:guradostorefront.aboveLeft</numIndex>
+                                        <numIndex index="1">above-left</numIndex>
+                                    </numIndex>
+									<numIndex index="3" type="array">
+                                        <numIndex index="0">LLL:EXT:gurado_storefront/Resources/Private/Language/Backend.xlf:guradostorefront.bottomCenter</numIndex>
+                                        <numIndex index="1">bottom-center</numIndex>
+                                    </numIndex>
+									<numIndex index="4" type="array">
+                                        <numIndex index="0">LLL:EXT:gurado_storefront/Resources/Private/Language/Backend.xlf:guradostorefront.bottomRight</numIndex>
+                                        <numIndex index="1">bottom-right</numIndex>
+                                    </numIndex>
+									<numIndex index="5" type="array">
+                                        <numIndex index="0">LLL:EXT:gurado_storefront/Resources/Private/Language/Backend.xlf:guradostorefront.bottomLeft</numIndex>
+                                        <numIndex index="1">bottom-left</numIndex>
+                                    </numIndex>
+									<numIndex index="6" type="array">
+                                        <numIndex index="0">LLL:EXT:gurado_storefront/Resources/Private/Language/Backend.xlf:guradostorefront.inTextRight</numIndex>
+                                        <numIndex index="1">in-text-right</numIndex>
+                                    </numIndex>
+									<numIndex index="7" type="array">
+                                        <numIndex index="0">LLL:EXT:gurado_storefront/Resources/Private/Language/Backend.xlf:guradostorefront.inTextLeft</numIndex>
+                                        <numIndex index="1">in-text-left</numIndex>
+                                    </numIndex>
+								</items>
+								<maxitems>1</maxitems>
+                                <size>1</size>
+							</config>
+							<displayCond>FIELD:settings.view:=:detail</displayCond>
+						</TCEforms>
+					</settings.detailsImgPosition>
+                </el>
+            </ROOT>
+        </sDEF>
+		<other_settings>
+            <ROOT>
+                <TCEforms>
+                    <sheetTitle>LLL:EXT:gurado_storefront/Resources/Private/Language/Backend.xlf:guradostorefront.otherSettings</sheetTitle>
+                </TCEforms>
+                <type>array</type>
+                <el>
+					<settings.listPid>
+                        <TCEforms>
+                            <label>LLL:EXT:gurado_storefront/Resources/Private/Language/Backend.xlf:guradostorefront.voucherListPid</label>
+                            <config>
+                                <type>group</type>
+                                <default>0</default>
+								<internal_type>db</internal_type>
+								<allowed>pages</allowed>
+								<size>1</size>
+								<minitems>0</minitems>
+								<maxitems>1</maxitems>
+								<show_thumbs>1</show_thumbs>
+								<eval>required</eval>
+                            </config>
+							<displayCond>
+								<or>
+									<value1>FIELD:sDEF.settings.view:=:cart</value1>
+									<value2>FIELD:sDEF.settings.view:=:payment</value2>
+									<value3>FIELD:sDEF.settings.view:=:checkout</value3>
+									<value4>FIELD:sDEF.settings.view:=:success</value4>
+								</or>
+							</displayCond>
+                        </TCEforms>
+                    </settings.listPid>
+					<settings.detailsPid>
+                        <TCEforms>
+                            <label>LLL:EXT:gurado_storefront/Resources/Private/Language/Backend.xlf:guradostorefront.voucherDetailsPid</label>
+                            <config>
+                                <type>group</type>
+                                <default>0</default>
+								<internal_type>db</internal_type>
+								<allowed>pages</allowed>
+								<size>1</size>
+								<minitems>0</minitems>
+								<maxitems>1</maxitems>
+								<show_thumbs>1</show_thumbs>
+								<eval>required</eval>
+                            </config>
+							<displayCond>FIELD:sDEF.settings.view:=:list</displayCond>
+                        </TCEforms>
+                    </settings.detailsPid>
+					<settings.cartPid>
+                        <TCEforms>
+                            <label>LLL:EXT:gurado_storefront/Resources/Private/Language/Backend.xlf:guradostorefront.cartPid</label>
+                            <config>
+                                <type>group</type>
+                                <default>0</default>
+								<internal_type>db</internal_type>
+								<allowed>pages</allowed>
+								<size>1</size>
+								<minitems>0</minitems>
+								<maxitems>1</maxitems>
+								<show_thumbs>1</show_thumbs>
+								<eval>required</eval>
+                            </config>
+							<displayCond>
+								<or>
+									<value1>FIELD:sDEF.settings.view:=:list</value1>
+									<value2>FIELD:sDEF.settings.view:=:detail</value2>
+									<value3>FIELD:sDEF.settings.view:=:checkout</value3>
+								</or>
+							</displayCond>
+                        </TCEforms>
+                    </settings.cartPid>
+					<settings.checkoutPid>
+                        <TCEforms>
+                            <label>LLL:EXT:gurado_storefront/Resources/Private/Language/Backend.xlf:guradostorefront.checkoutPid</label>
+                            <config>
+                                <type>group</type>
+                                <default>0</default>
+								<internal_type>db</internal_type>
+								<allowed>pages</allowed>
+								<size>1</size>
+								<minitems>0</minitems>
+								<maxitems>1</maxitems>
+								<show_thumbs>1</show_thumbs>
+								<eval>required</eval>
+                            </config>
+							<displayCond>
+								<or>
+									<value1>FIELD:sDEF.settings.view:=:cart</value1>
+									<value2>FIELD:sDEF.settings.view:=:payment</value2>
+								</or>
+							</displayCond>
+                        </TCEforms>
+                    </settings.checkoutPid>
+					<settings.paymentPid>
+                        <TCEforms>
+                            <label>LLL:EXT:gurado_storefront/Resources/Private/Language/Backend.xlf:guradostorefront.paymentPid</label>
+                            <config>
+                                <type>group</type>
+                                <default>0</default>
+								<internal_type>db</internal_type>
+								<allowed>pages</allowed>
+								<size>1</size>
+								<minitems>0</minitems>
+								<maxitems>1</maxitems>
+								<show_thumbs>1</show_thumbs>
+								<eval>required</eval>
+                            </config>
+							<displayCond>FIELD:sDEF.settings.view:=:checkout</displayCond>
+                        </TCEforms>
+                    </settings.paymentPid>
+					<settings.successPid>
+                        <TCEforms>
+                            <label>LLL:EXT:gurado_storefront/Resources/Private/Language/Backend.xlf:guradostorefront.orderSuccessPid</label>
+                            <config>
+                                <type>group</type>
+                                <default>0</default>
+								<internal_type>db</internal_type>
+								<allowed>pages</allowed>
+								<size>1</size>
+								<minitems>0</minitems>
+								<maxitems>1</maxitems>
+								<show_thumbs>1</show_thumbs>
+								<eval>required</eval>
+                            </config>
+							<displayCond>FIELD:sDEF.settings.view:=:payment</displayCond>
+                        </TCEforms>
+                    </settings.successPid>
+				</el>
+            </ROOT>
+        </other_settings>
+    </sheets>
+</T3DataStructure>
