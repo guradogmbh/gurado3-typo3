@@ -57,6 +57,11 @@ call_user_func(
 		
 		$GLOBALS['TYPO3_CONF_VARS']['FE']['eID_include']['calculate_config_product_price'] = \Gurado\GuradoStorefront\Controller\GuradoStorefrontAjaxController::class . '::calculateConfigPorductPrice';
 		
+
+        $GLOBALS['TYPO3_CONF_VARS']['FE']['eID_include']['create_cart_redemption'] = \Gurado\GuradoStorefront\Controller\GuradoStorefrontAjaxController::class . '::createCartRedemption';
+
+        $GLOBALS['TYPO3_CONF_VARS']['FE']['eID_include']['delete_cart_redemption'] = \Gurado\GuradoStorefront\Controller\GuradoStorefrontAjaxController::class . '::deleteCartRedemption';
+
 		$GLOBALS['TYPO3_CONF_VARS']['FE']['eID_include']['checkout'] = \Gurado\GuradoStorefront\Controller\GuradoStorefrontAjaxController::class . '::addAddress';
 		
 		$GLOBALS['TYPO3_CONF_VARS']['FE']['eID_include']['get_agreement_contents'] = \Gurado\GuradoStorefront\Controller\GuradoStorefrontAjaxController::class . '::getAgreementContents';

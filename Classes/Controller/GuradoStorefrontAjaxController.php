@@ -228,6 +228,80 @@ class GuradoStorefrontAjaxController
         return $response
             ->withHeader('Content-Type', 'application/json');
     }
+
+	public function createCartRedemption(ServerRequestInterface $request) {
+		$parameters = array();
+		$parameters = json_decode($request->getParsedBody()['parameters']);
+		$guradoCart = $parameters->guradoCart;
+		
+		$curl = curl_init($this->getApiUrl() . '/v1/carts/' . $guradoCart . '/redemptions');
+		//set headers
+		curl_setopt($curl, CURLOPT_HTTPHEADER, array(
+			'Accept: application/json', 'Content-type: application/json', 'authorization: Bearer ' . $this->getExtensionConfig('authToken')
+		));
+		
+		curl_setopt($curl, CURLOPT_POST, 1);
+		curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode($parameters));
+		curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+		
+		$curlResponseData = json_decode(curl_exec($curl));
+		curl_close($curl);
+		
+		if($curlResponseData->message) {
+			$responseData = json_encode([
+				'success' => false,
+				'error' => $curlResponseData->message
+			], JSON_UNESCAPED_UNICODE);
+		} else {
+			$responseData = json_encode([
+				'success' => true,
+				'price' => $curlResponseData->price
+			], JSON_UNESCAPED_UNICODE);
+		}
+		
+		$response = new Response();
+        $response->getBody()->write($responseData);
+        return $response
+            ->withHeader('Content-Type', 'application/json');
+    }
+
+	public function deleteCartRedemption(ServerRequestInterface $request) {
+		$parameters = array();
+		$parameters = json_decode($request->getParsedBody()['parameters']);
+		$guradoCart = $parameters->guradoCart;
+		$redemption_id = $parameters->redemption_id;
+
+		
+		$curl = curl_init($this->getApiUrl() . '/v1/carts/' . $guradoCart .'/redemptions/'. $redemption_id); 
+		//set headers
+		curl_setopt($curl, CURLOPT_HTTPHEADER, array(
+			'Accept: application/json', 'Content-type: application/json', 'authorization: Bearer ' . $this->getExtensionConfig('authToken')
+		));
+		
+		curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "DELETE");
+		curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+		
+		$curlResponseData = json_decode(curl_exec($curl));
+		curl_close($curl);
+		
+		if($curlResponseData->message) {
+			$responseData = json_encode([
+				'success' => false,
+				'error' => $curlResponseData->message
+			], JSON_UNESCAPED_UNICODE);
+		} else {
+			$responseData = json_encode([
+				'success' => true,
+				'price' => $curlResponseData->price
+			], JSON_UNESCAPED_UNICODE);
+		}
+		
+		$response = new Response();
+        $response->getBody()->write($responseData);
+        return $response
+            ->withHeader('Content-Type', 'application/json');
+    }
+
 	
 	/**
 	* @param ServerRequestInterface $request

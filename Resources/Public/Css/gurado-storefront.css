@@ -969,6 +969,10 @@ label.fixed-price {
 	.back-to-last-page svg, .gurado-storefront-cart .back-link svg { 
 		display:none;
 	}
+
+	.store-front-coupon-block { 
+		margin-bottom:3em !important; 
+	}
 }
 @media all and (max-width: 575px) {
 	.container {

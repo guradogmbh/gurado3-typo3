@@ -41,6 +41,8 @@ function displayCart(guradoCart) {
 				var desktopCart = '';
 				var mobileCart = '';
 				var summary = '';
+				var cartCouponCode = '';
+
 				
 				if($(".cart-icon .cart-total").length) {
 					if(cartItems.length > 0) {
@@ -321,6 +323,11 @@ function displayCart(guradoCart) {
 						summary += '<div class="summary-row text-right text-end"><div class="summary-label mb-0">' + $(".subtotal-label").text() + '</div><div class="summary-value mb-0">' + (result.data.subtotal).toLocaleString('de-DE', { style: 'currency', currency: result.data.currency_code}) + '</div></div>';
 						
 						summary += taxPercentage;
+
+						if(result.data && result.data.redemptions && result.data.redemptions.length > 0) { 
+
+							summary += '<div class="summary-row total text-right text-end"><div class="summary-label mb-0 font-bold">' + $(".coupon-label").text() +'(' + result.data.redemptions[0].code+')' + '</div><div class="summary-value mb-0 font-bold">' + (result.data.total_redemption_amount).toLocaleString('de-DE', { style: 'currency', currency: result.data.currency_code}) + '</div></div>';
+						}
 						
 						summary += '<div class="summary-row total text-right text-end"><div class="summary-label mb-0 font-bold">' + $(".total-label").text() + '</div><div class="summary-value mb-0 font-bold">' + (result.data.grand_total).toLocaleString('de-DE', { style: 'currency', currency: result.data.currency_code}) + '</div></div>';
 						
@@ -329,15 +336,40 @@ function displayCart(guradoCart) {
 						summary += '<div class="summary-row text-right text-end"><div class="summary-label mb-0">' + $(".subtotal-label").text() + '</div><div class="summary-value mb-0">' + (result.data.subtotal).toLocaleString('en-US', { style: 'currency', currency: result.data.currency_code}) + '</div></div>';
 						
 						summary += taxPercentage;
+
+						if(result.data && result.data.redemptions && result.data.redemptions.length > 0) { 
+							summary += '<div class="summary-row total text-right text-end"><div class="summary-label mb-0 font-bold">' + $(".coupon-label").text() +'(' + result.data.redemptions[0].code+')' + '</div><div class="summary-value mb-0 font-bold">' + (result.data.total_redemption_amount).toLocaleString('de-DE', { style: 'currency', currency: result.data.currency_code}) + '</div></div>';
+						}
+
 						
 						summary += '<div class="summary-row total text-right text-end"><div class="summary-label mb-0">' + $(".total-label").text() + '</div><div class="summary-value mb-0">' + (result.data.grand_total).toLocaleString('en-US', { style: 'currency', currency: result.data.currency_code}) + '</div></div>';
 						
 						$(".total-to-pay span").text((result.data.grand_total).toLocaleString('en-US', { style: 'currency', currency: result.data.currency_code}));
 					}
 					summary += '</div></div>';
+
+					if( result.data && result.data.can_apply_redemption == 'YES') { 
+						$("#coupon_code").prop('disabled', false);  
+						cartCouponCode += '<div class="row"><div class="col-sm-12">';
+						cartCouponCode += '<form class="discount-form" novalidate> <label class="block-heading pt-0">' +  $(".coupon-code").text()+ '</label><label>'+ $(".coupon-code-information").text()+'</label>';  
+						if(result.data.redemptions && result.data.redemptions.length == 0)  {
+							cartCouponCode +='<input type="text" id="coupon_code" value=""  class="form-control form-field" name="coupon_code" />';
+							cartCouponCode +='<a type="submit" class="btn btn-primary m-w-100 mt-5" href="javascript:" onclick="redeem(event)">'+$(".redeem-discount-code").text()+'</a> </form>';  
+						}
+						if(result.data.redemptions && result.data.redemptions.length > 0) { 
+							cartCouponCode +='<input type="text" id="coupon_code" value="' + result.data.redemptions[0].code + '" disabled = "false" class="form-control form-field" name="coupon_code" />';
+							cartCouponCode +='<a type="submit" class="btn btn-primary m-w-100 mt-5" href="javascript:" onclick="deleteCouponCode(' + result.data.redemptions[0].redemption_id + ')">'+$(".delete-discount-code").text()+'</a> </form>';  
+						}
+						
+					cartCouponCode += '</div></div>';
+					}
 					
 					if($('#cartTableMobile').length)
 						$('.cartSummary').html(summary);
+
+					if( result.data && result.data.can_apply_redemption == 'YES') {  
+						$('.gurado-storefront .cartCouponCode').html(cartCouponCode);
+					}
 					
 					$(".have-cart-items").show();
 					$(".no-cart").hide();
@@ -372,6 +404,73 @@ function displayCart(guradoCart) {
 		}
 	,'json');
 }
+
+function redeem(event){
+	event.preventDefault();
+	console.log("the event is=>",event);
+	var couponCode = document.getElementById('coupon_code').value;
+	console.log("the coupon code is as follow=>",couponCode); 
+
+	$(".gurado-storefront .data-load-spinner").show();
+	var parameters = {};
+	var guradoCart = localStorage.getItem('guradoCart');
+	console.log("the guradoCart is as follow=>",guradoCart);  
+
+	parameters.code = couponCode;
+	parameters.guradoCart = guradoCart;
+
+	
+	$.post(
+		'index.php',
+		{
+			eID:'create_cart_redemption',
+			parameters: JSON.stringify(parameters)
+		},
+		function(result) {
+			if(result.success) {
+				displayDeleteButton = true;
+				displayCart(guradoCart);
+			} else {
+				displayDeleteButton = false;
+				$(".gurado-storefront .data-load-spinner").hide(); 
+				alert($(".invalid-redemption-code").text());
+			}
+		}
+	,'json');
+
+}
+
+function deleteCouponCode(redemptionId){
+	console.log("the event is=>",redemptionId); 
+	$(".gurado-storefront .data-load-spinner").show();
+	var parameters = {};
+	var guradoCart = localStorage.getItem('guradoCart');
+	console.log("the guradoCart is as follow=>",guradoCart);  
+
+	parameters.redemption_id = redemptionId;
+	parameters.guradoCart = guradoCart;
+
+	$.post(
+		'index.php',
+		{
+			eID:'delete_cart_redemption',
+			parameters: JSON.stringify(parameters) 
+		},
+		function(result) {
+			if(result.success) {
+				displayDeleteButton = true;
+				$("#coupon_code").prop('disabled', false);  
+				$(".gurado-storefront input[name='coupon_code']").val('');  
+				displayCart(guradoCart);
+			} else {
+				displayDeleteButton = false;
+				$(".gurado-storefront .data-load-spinner").hide(); 
+				alert($(".process-error-message").text());
+			}
+		}
+	,'json');
+
+} 
 
 function updateCartItemQty(action, elem) {
 	var qtyToChange = Number($(elem).parent(".qty-container").find(".qty-value").text());

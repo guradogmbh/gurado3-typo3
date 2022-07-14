@@ -294,6 +294,36 @@
 			<trans-unit id="amountFrom">
 				<source>ab</source>
 			</trans-unit>
+			<trans-unit id="showVoucher">
+				<source>Weitere Infos</source>
+			</trans-unit>
+
+			<trans-unit id="couponCodes">    
+				<source>Rabattcodes</source>     
+			</trans-unit>
+
+			<trans-unit id="couponCodeInformation">    
+				<source>Wenn Du einen Rabattcode besitzt, trage diesen bitte hier ein.</source>     
+			</trans-unit>
+
+			<trans-unit id="redeemDiscountCode">    
+				<source>Rabattcode einlösen</source>      
+			</trans-unit>
+
+			<trans-unit id="couponAmount">    
+				<source>Rabatt </source>      
+			</trans-unit>
+
+			<trans-unit id="deleteDiscountCode">    
+				<source>Rabattcode stornieren </source>      
+			</trans-unit>
+
+			<trans-unit id="invalidRedemptionCode">    
+				<source>Ungültiger Gutscheincode </source>      
+			</trans-unit>
+
+			
+
 		</body>
 	</file>
 </xliff>
