@@ -257,9 +257,9 @@ function displayCart(guradoCart) {
 							}
 							
 							mobileCart += '<div class="row cart-row">'
-								+ '<span class="voucher-img"><img src="' + cartItems[i]['voucher_design_template']['thumbnail_url'] + '" /></span>'
-								+ '<div class="details"><div class="name">' + cartItems[i]['name'] + '</div><span>' + $("div.quantity-label").text() + ':&nbsp;' + cartItems[i]['qty'] + '</span></div>'
-								+ '<span class="total-price">' + totalFormatted + '</span>'
+								+ '<span class="voucher-img col-lg-4 col-sm-4 col-xl-4 col-md-4"><img src="' + cartItems[i]['voucher_design_template']['thumbnail_url'] + '" /></span>'
+								+ '<div class="details col-lg-4 col-sm-4 col-xl-4 col-md-4"><div class="name">' + cartItems[i]['name'] + '</div><span>' + $("div.quantity-label").text() + ':&nbsp;' + cartItems[i]['qty'] + '</span></div>'
+								+ '<span class="total-price col-lg-4 col-sm-4 col-xl-4 col-md-4">' + totalFormatted + '</span>'
 								+ addOnsText
 								+ '</div>';
 						} else {

@@ -413,7 +413,6 @@ select {
 	padding: 0;
 }
 .collapse-div .cart-row .voucher-img, .mobile-cart-row .voucher-img {
-	position: absolute;
 	left: 0;
 	max-width: 70px;
 	padding: 0;
@@ -973,6 +972,15 @@ label.fixed-price {
 	.store-front-coupon-block { 
 		margin-bottom:3em !important; 
 	}
+
+	.collapse-div .cart-row .voucher-img, .mobile-cart-row .voucher-img {
+		position:absolute;
+		left: 0;
+		max-width: 70px;
+		padding: 0;
+		top: 5px;
+	}
+
 }
 @media all and (max-width: 575px) {
 	.container {
